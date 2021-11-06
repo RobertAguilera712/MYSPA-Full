@@ -1,0 +1,217 @@
+:root{
+    --citron: #91ab23ff;
+    --olive-drab-3: #809919ff;
+    --mellow-apricot: #f9c481ff;
+    --cultured: #f5f5f5;
+    --cafe: #4d381a !important;
+    --dark-color: #1a1a1a;
+    --white-color: #ffffff;
+    --light-grey-color: #f5f5f5;
+    --gold-color: #ffb944;
+    }
+    
+
+.color{
+    background-color: var(--cultured);
+}
+
+.nav-link{
+    color: var(--cafe) !important;
+}
+
+.nav-link:hover{
+    color: var(--citron) !important;
+}
+
+.text-color{
+    color: var(--cafe)
+}
+
+.marca{
+    margin: 0;
+    padding: 0;
+    font-family: 'Economica', sans-serif;
+    color: var(--cafe);
+    font-size: 36px;
+  }
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.bgDark { background-color: var(--dark-color); }
+.bgLight { background-color: var(--white-color); }
+.bgLightGrey { background-color: var(--light-grey-color); }
+
+.colorDark { color: var(--dark-color) !important; }
+
+h1 { font-size: 66px; font-weight: 700; line-height: 80px; }
+h2 { font-size: 48px; margin-bottom: 30px; }
+h3 { font-size: 33px; }
+h5 { margin-bottom: 0px; }
+
+p {
+    font-size: 18px;
+    color: var(--dark-color);
+    opacity: .5;
+    line-height: 1.8;
+    margin-bottom: 0px;
+}
+
+a:hover { text-decoration: none; }
+
+.btn {
+    font-size: 14px;
+    padding: 15px 26px;
+    min-width: 160px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    border: 2px solid var(--dark-color);
+}
+
+.btn-secondary {
+    background-color: var(--white-color);
+    color: var(--dark-color);
+    border: 2px solid var(--white-color);
+}
+
+.btn-alternate {
+    background-color: transparent;
+    color: var(--white-color);
+    border: 2px solid var(--white-color);
+}
+
+.btn-primary:hover { background-color: var(--dark-color); border: 2px solid var(--dark-color); }
+.btn-secondary:hover { background-color: var(--white-color); color: var(--dark-color); border: 2px solid var(--white-color); }
+.btn-secondary:focus { background-color: var(--white-color) !important; outline: none; border: 2px solid var(--white-color) !important; box-shadow: none; }
+
+.logo-brand {
+    max-width: 180px;
+    min-width: 160px;
+}
+
+section { padding: 120px 0; }
+
+.divider { border-bottom: 2px solid var(--light-grey-color); }
+
+.content-center {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form-control {
+    font-size: 14px;
+    border: 1px solid #cacaca;
+    padding: 15px;
+    border-radius: 2px;
+}
+
+.form-control:focus {
+    border: 1px solid var(--dark-color);
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* //////////////
+   Carrousel
+//////////////*/
+
+#carrousel {
+    background-image: url(../img/myspa.jpg);
+    background-size: cover;
+    padding-top: 130px;
+    min-height: 700px;
+    color: var(--dark-color);
+    opacity: 200%;
+}
+
+#hero p {
+    color: var(--white-color);
+    opacity: 200%;
+}
+
+
+/* //////////////
+   Portfolio
+//////////////*/
+
+.portfolio-container {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+    border-radius: 2px;
+}
+
+.portfolio-container img {
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
+.portfolio-container:hover img {
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.portfolio-details {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9000;
+}
+
+.portfolio-details h2 {
+    margin-bottom: 0px;
+}
+
+.portfolio-details a h2, .portfolio-details a p {
+    color: var(--dark-color);
+}
+
+/* //////////////
+   Footer
+//////////////*/
+
+footer {
+    padding: 80px 0;
+    text-align: center;
+    color: var(--white-color);
+}
+
+footer a {
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+
+footer .list-inline .list-inline-item {
+    padding: 10px 15px;
+}
+
+
+.footer-link:hover{
+    color: var(--citron) !important;
+}
+

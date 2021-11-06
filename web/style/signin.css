@@ -1,0 +1,32 @@
+:root{
+  --citron: #91ab23ff;
+  --olive-drab-3: #809919ff;
+  --mellow-apricot: #f9c481ff;
+  --cultured: #efefefff;
+  --cafe: #4d381a !important;
+}
+body {
+  height: 100%;
+  background-image: linear-gradient(220deg, #ECE9E6 0%, #FFFFFF 100%);
+}
+
+.container{
+  height: 100%;
+}
+
+.marca{
+  margin: 0;
+  padding: 0;
+  font-family: 'Economica', sans-serif;
+  color: var(--cafe);
+  font-size: 36px;
+}
+
+.btn-primary{
+  background-color: var(--olive-drab-3) !important;
+  border: none;
+}
+
+.btn-primary:hover{
+  background-color: rgba(128, 153, 25, 0.8) !important;
+}
