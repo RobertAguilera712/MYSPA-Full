@@ -113,9 +113,7 @@ CREATE PROCEDURE insertarCliente(   IN  var_nombre          VARCHAR(64),
                                     
                                     IN  var_correo          VARCHAR(11),
                                     IN  var_numeroUnico     VARCHAR(11),
-                                    IN  var_foto            LONGTEXT,
-                                    IN  var_rutaFoto        TEXT,
-                                    
+                                                                        
                                     OUT var_idPersona       INT,
                                     OUT var_idUsuario       INT,
                                     OUT var_idCliente       INT
@@ -133,10 +131,8 @@ CREATE PROCEDURE insertarCliente(   IN  var_nombre          VARCHAR(64),
         SET var_idUsuario = LAST_INSERT_ID();
 
 
-        INSERT INTO cliente ( correo, numeroUnico, estatus, foto, rutaFoto,
-                              idPersona, idUsuario) 
-                    VALUES( var_correo, var_numeroUnico, 1, var_foto, 
-                            var_rutaFoto, var_idPersona, var_idUsuario);
+        INSERT INTO cliente ( correo, numeroUnico, estatus, idPersona, idUsuario) 
+                    VALUES( var_correo, var_numeroUnico, 1, var_idPersona, var_idUsuario);
         SET var_idCliente = LAST_INSERT_ID();
     END
 $$
@@ -159,10 +155,8 @@ CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64),
                                         IN  var_rol             VARCHAR(24),
 
                                         IN  var_correo          VARCHAR(11),
-                                        IN  var_clave           VARCHAR(11),
-                                        IN  var_foto            LONGTEXT,
-                                        IN  var_rutaFoto        TEXT,
-
+                                        IN  var_numeroUnico     VARCHAR(11),
+                                        
                                         IN var_idPersona        INT,
                                         IN var_idUsuario        INT,
                                         IN var_idCliente        INT
@@ -183,10 +177,7 @@ CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64),
                         WHERE   idUsuario = var_idUsuario;
 
         UPDATE  cliente SET     correo = var_correo,
-                                clave = var_clave,
-                                estatus = var_estatus, 
-                                foto = var_foto,
-                                rutaFoto = var_rutaFoto 
+                                numeroUnico = var_numeroUnico
                         WHERE   idCliente = var_idCliente;
 
     END

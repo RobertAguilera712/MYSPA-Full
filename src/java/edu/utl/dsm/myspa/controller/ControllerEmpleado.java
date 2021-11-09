@@ -202,7 +202,7 @@ public class ControllerEmpleado
         //Generar la consulta SQL
         String query = "SELECT * FROM v_empleados WHERE estatus = ? AND "+filter+";";
         
-        //Generar la lista de sucursales que se va a obtener con la consulta
+        //Generar la lista de empleados que se va a obtener con la consulta
         List<Empleado> empleados = new ArrayList<Empleado>();
         
         //Crear un objeto de la conexión a la BD y abrirla
