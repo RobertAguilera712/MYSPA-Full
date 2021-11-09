@@ -112,7 +112,7 @@ CREATE PROCEDURE insertarCliente(   IN  var_nombre          VARCHAR(64),
                                     IN  var_rol             VARCHAR(24),
                                     
                                     IN  var_correo          VARCHAR(11),
-                                    IN  var_numeroUnico     VARCHAR(11),
+                                    IN  var_numeroUnico     VARCHAR(14),
                                                                         
                                     OUT var_idPersona       INT,
                                     OUT var_idUsuario       INT,
@@ -167,13 +167,13 @@ CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64),
                                 apellidoMaterno = var_apellidoMaterno,
                                 genero = var_genero,
                                 domicilio = var_domicilio,
-                                telefono = var_telefono, 
-                                rfc = var_rfcgit
+                                telefono = var_telefono,
+                                rfc = var_rfc
                         WHERE   idPersona = var_idPersona;
 
         UPDATE  usuario SET     nombreUsuario = var_nombreUsuario, 
                                 contrasenia = var_contrasenia,
-                                rol = var_rol 
+                                rol = var_rol
                         WHERE   idUsuario = var_idUsuario;
 
         UPDATE  cliente SET     correo = var_correo,
