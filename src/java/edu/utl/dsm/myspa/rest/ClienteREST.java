@@ -40,7 +40,7 @@ public class ClienteREST extends Application {
     @Path("insert")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(@FormParam("cliente") @DefaultValue("") String cliente) {
+    public Response insert(@FormParam("new") @DefaultValue("") String cliente) {
         String out = "";
 		try {
 			Gson objGS = new Gson();
@@ -61,7 +61,7 @@ public class ClienteREST extends Application {
     @Path("update")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@FormParam("cliente") @DefaultValue("") String cliente) {
+    public Response update(@FormParam("new") @DefaultValue("") String cliente) {
         String out = "";
 		try {
 			Gson objGS = new Gson();

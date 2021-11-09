@@ -21,7 +21,7 @@ async function loadModuleForm(moduleName, register) {
 }
 
 function putRegisterInForm(register) {
-    const inputs = document.querySelectorAll("input");
+    const inputs = document.querySelectorAll("input[key]");
     inputs.forEach(input => {
         const value = eval(`register.${input.getAttribute("key")}`);
         input.value = value;

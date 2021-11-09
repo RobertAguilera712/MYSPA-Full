@@ -10,7 +10,7 @@ import edu.utl.dsm.myspa.model.Persona;
 public class Test {
 
     public static void main(String[] args) {
-        probarUpdate();
+		probarDelete();
     }
     
     public static void probarGetAll() {
