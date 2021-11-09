@@ -1,4 +1,4 @@
- USE myspa;
+USE myspa;
  
 DROP PROCEDURE IF EXISTS insertarEmpleado;
 DELIMITER $$
@@ -168,7 +168,7 @@ CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64),
                                 genero = var_genero,
                                 domicilio = var_domicilio,
                                 telefono = var_telefono, 
-                                rfc = var_rfc
+                                rfc = var_rfcgit
                         WHERE   idPersona = var_idPersona;
 
         UPDATE  usuario SET     nombreUsuario = var_nombreUsuario, 
@@ -199,3 +199,4 @@ CREATE PROCEDURE insertarReservacion(   IN var_fechaHoraInicio  VARCHAR(21),
     END
 $$
 DELIMITER ;
+
