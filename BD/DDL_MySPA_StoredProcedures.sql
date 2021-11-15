@@ -111,7 +111,7 @@ CREATE PROCEDURE insertarCliente(   IN  var_nombre          VARCHAR(64),
                                     IN  var_contrasenia     VARCHAR(48),
                                     IN  var_rol             VARCHAR(24),
                                     
-                                    IN  var_correo          VARCHAR(11),
+                                    IN  var_correo          VARCHAR(68),
                                     IN  var_numeroUnico     VARCHAR(14),
                                                                         
                                     OUT var_idPersona       INT,
