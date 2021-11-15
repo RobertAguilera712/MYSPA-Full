@@ -143,8 +143,8 @@ public class ControllerCliente {
         cstmt.setString(10, c.getUsuario().getRol());
 
         //Establecemos los parámetros de los datos de Cliente:        
-        cstmt.setString(11, c.getCorreo());
-        cstmt.setString(12, c.getNumeroUni());
+        cstmt.setString(11, c.getNumeroUni());
+        cstmt.setString(12, c.getCorreo());
 
         //Establecemos los ID's de las tablas relacionadas:
         cstmt.setInt(13, c.getPersona().getId());
