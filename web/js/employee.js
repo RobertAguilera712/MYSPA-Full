@@ -10,14 +10,27 @@ function refreshEmployeesTable() {
     refreshTable("employee");
 }
 
-function loadEmployeesForm() {
-    loadModuleForm("employee");
+async function loadEmployeesForm() {
+    await loadModuleForm("employee");
+    const btnUploadImage = document.getElementById("btnUploadImg");
+    const imgInput = document.getElementById("imgFile");
+    const selectedImg = document.getElementById("selectedImg");
+
+    btnUploadImage.addEventListener("click", () => {
+        imgInput.click();
+    });
+
+    imgInput.addEventListener("change", () => {
+        getBase64(imgInput.files[0]).then(src => {
+            selectedImg.src = src;
+        });
+    });
 }
 
 function saveEmployee(e) {
     e.preventDefault();
     const employee = getEmployeeFromForm();
-	console.log(employee);
+    console.log(employee);
     savePOST(employee, "employee");
 }
 
