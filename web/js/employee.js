@@ -10,15 +10,31 @@ function refreshEmployeesTable() {
     refreshTable("employee");
 }
 
-function loadEmployeesForm() {
-    loadModuleForm("employee");
+async function loadEmployeesForm() {
+    await loadModuleForm("employee");
+    const btnUploadImage = document.getElementById("btnUploadImg");
+    const imgInput = document.getElementById("imgFile");
+    const selectedImg = document.getElementById("selectedImg");
+    const imgText = document.getElementById("imgText");
+
+    btnUploadImage.addEventListener("click", () => {
+        imgInput.click();
+    });
+
+    imgInput.addEventListener("change", () => {
+        getBase64(imgInput.files[0]).then(src => {
+            selectedImg.src = src;
+            imgText.value = src;
+        });
+    });
 }
 
 function saveEmployee(e) {
     e.preventDefault();
     const employee = getEmployeeFromForm();
-	console.log(employee);
+    console.log(employee);
     savePOST(employee, "employee");
+    document.getElementById("selectedImg").src = "";
 }
 
 function getEmployeeFromForm() {
@@ -33,6 +49,7 @@ function getEmployeeFromForm() {
     const job = document.getElementById("txtPuesto").value;
     const user = document.getElementById("txtUsuario").value;
     const password = document.getElementById("txtPassword").value;
+    const photo = document.getElementById("imgText").value;
 
     const employee = {
         "id": id,
@@ -53,7 +70,7 @@ function getEmployeeFromForm() {
             "rol": job
         },
         "puesto": job,
-        "foto": "",
+        "foto": photo,
         "rutaFoto": "",
         "estatus": "1"
     }

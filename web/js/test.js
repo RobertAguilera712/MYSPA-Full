@@ -60,8 +60,9 @@ function populateTable() {
         let row = tableBody.insertRow();
 
         for (let i in keys) {
+            let key = keys[i];
             let cell = row.insertCell();
-            cell.textContent = eval(`register.${keys[i]}`);
+            cell.textContent = eval(`register.${key}`);
         }
 
         let actionsCell = row.insertCell();
@@ -196,4 +197,13 @@ function savePOST(register, moduleName) {
         }, () => {
             waitAlert("Cambios cancelados", "No se guardaron los cambios", "error");
         });
+}
+
+function getBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
 }
