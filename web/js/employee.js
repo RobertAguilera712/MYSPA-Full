@@ -15,7 +15,6 @@ async function loadEmployeesForm() {
     const btnUploadImage = document.getElementById("btnUploadImg");
     const imgInput = document.getElementById("imgFile");
     const selectedImg = document.getElementById("selectedImg");
-    const imgText = document.getElementById("imgText");
 
     btnUploadImage.addEventListener("click", () => {
         imgInput.click();
@@ -24,16 +23,15 @@ async function loadEmployeesForm() {
     imgInput.addEventListener("change", () => {
         getBase64(imgInput.files[0]).then(src => {
             selectedImg.src = src;
-            imgText.value = src;
         });
     });
 }
 
-function saveEmployee(e) {
+async function saveEmployee(e) {
     e.preventDefault();
     const employee = getEmployeeFromForm();
     console.log(employee);
-    savePOST(employee, "employee");
+    await savePOST(employee, "employee");
     document.getElementById("selectedImg").src = "";
 }
 
@@ -49,7 +47,7 @@ function getEmployeeFromForm() {
     const job = document.getElementById("txtPuesto").value;
     const user = document.getElementById("txtUsuario").value;
     const password = document.getElementById("txtPassword").value;
-    const photo = document.getElementById("imgText").value;
+    const photo = document.getElementById("selectedImg").src;
 
     const employee = {
         "id": id,

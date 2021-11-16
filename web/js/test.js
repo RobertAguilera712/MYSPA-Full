@@ -27,14 +27,21 @@ function putRegisterInForm(register) {
         input.value = value;
     });
 
-    const selects = document.querySelectorAll("select");
+    const selects = document.querySelectorAll("select[key]");
     selects.forEach(select => {
         const value = eval(`register.${select.getAttribute("key")}`);
         select.childNodes.forEach(node => {
             if (node.value === value) {
                 node.setAttribute("selected", "");
             }
-        })
+        });
+    });
+
+    const imgs = document.querySelectorAll("img[key]");
+
+
+    imgs.forEach(img => {
+        img.src = eval(`register.${img.getAttribute("key")}`).replaceAll(" ", "+");
     });
 }
 
@@ -62,7 +69,14 @@ function populateTable() {
         for (let i in keys) {
             let key = keys[i];
             let cell = row.insertCell();
-            cell.textContent = eval(`register.${key}`);
+            if (key === "foto") {
+                const img = new Image()
+                img.src = eval(`register.${key}`).replaceAll(" ", "+");
+                img.height = 100;
+                cell.appendChild(img);
+            } else {
+                cell.textContent = eval(`register.${key}`);
+            }
         }
 
         let actionsCell = row.insertCell();
@@ -80,7 +94,21 @@ function addActions(moduleName) {
 
     modifyButtons.forEach((btn, index) => {
         btn.onclick = () => {
-            loadModuleForm(moduleName, jsonArray[index]);
+            loadModuleForm(moduleName, jsonArray[index]).then(data => {
+                const btnUploadImage = document.getElementById("btnUploadImg");
+                const imgInput = document.getElementById("imgFile");
+                const selectedImg = document.getElementById("selectedImg");
+
+                btnUploadImage.addEventListener("click", () => {
+                    imgInput.click();
+                });
+
+                imgInput.addEventListener("change", () => {
+                    getBase64(imgInput.files[0]).then(src => {
+                        selectedImg.src = src;
+                    });
+                });
+            });
         }
     });
 
