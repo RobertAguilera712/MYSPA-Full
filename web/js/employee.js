@@ -10,29 +10,15 @@ function refreshEmployeesTable() {
     refreshTable("employee");
 }
 
-async function loadEmployeesForm() {
-    await loadModuleForm("employee");
-    const btnUploadImage = document.getElementById("btnUploadImg");
-    const imgInput = document.getElementById("imgFile");
-    const selectedImg = document.getElementById("selectedImg");
-
-    btnUploadImage.addEventListener("click", () => {
-        imgInput.click();
-    });
-
-    imgInput.addEventListener("change", () => {
-        getBase64(imgInput.files[0]).then(src => {
-            selectedImg.src = src;
-        });
-    });
+function loadEmployeesForm() {
+    loadModuleForm("employee");
 }
 
-async function saveEmployee(e) {
+function saveEmployee(e) {
     e.preventDefault();
     const employee = getEmployeeFromForm();
     console.log(employee);
-    await savePOST(employee, "employee");
-    document.getElementById("selectedImg").src = "";
+    savePOST(employee, "employee");
 }
 
 function getEmployeeFromForm() {

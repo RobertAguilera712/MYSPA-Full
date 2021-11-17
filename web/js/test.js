@@ -13,6 +13,9 @@ async function loadModuleForm(moduleName, register) {
     const url = `modules/${moduleName}Form.html`;
     const doc = await makeHTMLRequest(url);
     document.getElementById("content").innerHTML = doc.body.innerHTML;
+    doc.querySelectorAll("script").forEach(script => {
+        eval(script.innerHTML);
+    });
 
     if (register) {
         putRegisterInForm(register)
@@ -94,21 +97,7 @@ function addActions(moduleName) {
 
     modifyButtons.forEach((btn, index) => {
         btn.onclick = () => {
-            loadModuleForm(moduleName, jsonArray[index]).then(data => {
-                const btnUploadImage = document.getElementById("btnUploadImg");
-                const imgInput = document.getElementById("imgFile");
-                const selectedImg = document.getElementById("selectedImg");
-
-                btnUploadImage.addEventListener("click", () => {
-                    imgInput.click();
-                });
-
-                imgInput.addEventListener("change", () => {
-                    getBase64(imgInput.files[0]).then(src => {
-                        selectedImg.src = src;
-                    });
-                });
-            });
+            loadModuleForm(moduleName, jsonArray[index]);
         }
     });
 
