@@ -112,11 +112,11 @@ CREATE PROCEDURE insertarCliente(   IN  var_nombre          VARCHAR(64),
                                     IN  var_rol             VARCHAR(24),
                                     
                                     IN  var_correo          VARCHAR(68),
-                                    IN  var_numeroUnico     VARCHAR(14),
                                                                         
                                     OUT var_idPersona       INT,
                                     OUT var_idUsuario       INT,
-                                    OUT var_idCliente       INT
+                                    OUT var_idCliente       INT,
+                                    OUT var_numeroUnico     VARCHAR(14)
                                 )
     BEGIN
         INSERT INTO persona ( nombre, apellidoPaterno, apellidoMaterno, genero,
@@ -130,6 +130,9 @@ CREATE PROCEDURE insertarCliente(   IN  var_nombre          VARCHAR(64),
                     VALUES( var_nombreUsuario, var_contrasenia, var_rol);
         SET var_idUsuario = LAST_INSERT_ID();
 
+        IF LENGTH(var_rfc) >= 4 THEN
+            SET var_numeroUnico = CONCAT(SUBSTRING(var_rfc, 1, 4), CAST(UNIX_TIMESTAMP() AS CHAR));
+        END IF;
 
         INSERT INTO cliente ( correo, numeroUnico, estatus, idPersona, idUsuario) 
                     VALUES( var_correo, var_numeroUnico, 1, var_idPersona, var_idUsuario);
