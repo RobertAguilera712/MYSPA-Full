@@ -149,24 +149,23 @@ function saveGet(register, moduleName) {
     let url, onDone, alertTitle;
     let alertConfirmationText, alertDismissText;
     if (!register.hasOwnProperty("id")) {
-        delete register.id;
-        url = `api/${moduleName}/insert?s=${JSON.stringify(register)}`;
+        url = `api/${moduleName}/insert?new=${JSON.stringify(register)}`;
         alertTitle = "¿Quieres guardar el nuevo registro?";
         alertConfirmationText = "Si, guardarlo";
         alertDismissText = "No, cancelar";
         onDone = function () {
-            // clearInputs();
+            clearInputs();
             waitAlert("Registro guardado correctamente", "El nuevo registro se guardo en la base de datos", "success");
         }
     } else {
-        url = `api/${moduleName}/update?s=${JSON.stringify(register)}`;
+        url = `api/${moduleName}/update?new=${JSON.stringify(register)}`;
         alertTitle = "¿Quieres guardar los cambios";
         alertConfirmationText = "Si, guardarlos";
         alertDismissText = "No, cancelar";
         onDone = function () {
             loadBranchesTable();
             waitAlert("Registro modificado correctamente", "El registro se modificó correctamente", "success");
-        }
+        };
     }
 
     confirmationAlert(alertTitle, alertConfirmationText, alertDismissText,

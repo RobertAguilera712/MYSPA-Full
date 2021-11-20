@@ -19,7 +19,7 @@ public class SucursalRest extends Application {
 	@Path("insert")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response insert(@QueryParam("s") String s) {
+	public Response insert(@QueryParam("new") String s) {
 
 		String out;
 		Gson gson = new Gson();
@@ -83,7 +83,7 @@ public class SucursalRest extends Application {
 	@Path("update")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update(@QueryParam("s") String s){
+	public Response update(@QueryParam("new") String s){
 		String out;
 
 		Gson gson = new Gson();
@@ -125,11 +125,6 @@ public class SucursalRest extends Application {
 
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
-
-	
-
-	
-	
 
 }
 

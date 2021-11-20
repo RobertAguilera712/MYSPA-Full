@@ -34,30 +34,27 @@
 
 <body class="text-center">
     <main class="form-signin">
-        <form>
+        <form id="login-form">
             <img src="img/LogoPNG.png" alt="" width="auto" height="100">
             <p class="marca">MYSPA</p>
             <h1 class="h3 my-4 fw-normal">Ingresa</h1>
 
             <div class="form-floating mt-4">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Nombre de usuario</label>
+                <input type="text" class="form-control" id="txtUsuario" placeholder="Nombre de usuario" required>
+                <label for="txtUsuario">Nombre de usuario</label>
             </div>
             <div class="form-floating mb-4">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Contraseña</label>
+                <input type="password" class="form-control" id="txtPassword" placeholder="Contraseña">
+                <label for="txtPassword">Contraseña</label>
             </div>
-
-            <a href="dashboard.html"><button class="w-100 btn btn-lg btn-primary" type="button"
-                    href="dashboard.html">Entrar</button></a>
+            <button class="w-100 btn btn-lg btn-primary">Entrar</button>
             <p class="mt-5 mb-3 text-muted">&copy; Cloudy Mind 2021</p>
         </form>
     </main>
-    <!-- Primero va el Script de Jquery-->
-    <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
-
     <!-- Despues el Script de Bootstrap -->
     <script type="text/javascript" src="style/bootstrap/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="js/requests.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 
 </body>
 
