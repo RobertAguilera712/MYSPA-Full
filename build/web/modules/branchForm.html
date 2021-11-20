@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <h1 class="text-center my-3">Sucursales</h1>
+    <form class="row" id="form" onsubmit="saveBranch(event)">
+        <input type="text" id="txtId" key="id" hidden>
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="text" id="txtName" class="form-control" placeholder="Nombre" key="nombre" required>
+                <label for="txtName">Nombre</label>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="text" id="txtAddress" class="form-control" placeholder="Domicilio" key="domicilio"
+                    required>
+                <label for="txtAddress">Domicilio</label>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="number" id="txtLatitude" class="form-control" placeholder="Latitud" step="0.01"
+                    key="latitud" required>
+                <label for="txtLatitude">Latitud</label>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="number" id="txtLongitude" class="form-control" placeholder="Longitud" step="0.01"
+                    key="longitud" required>
+                <label for="txtLongitude">Longitud</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+            <button class="btn btn-primary m-2">Guardar</button>
+            <button class="btn btn-danger m-2" onclick="loadBranchesTable()" type="button">Regresar</button>
+        </div>
+    </form>
+</div>

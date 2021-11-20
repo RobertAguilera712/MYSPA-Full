@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Cloudy Mind" />
+  <meta name="description" content="MYSPA página principal" />
+  <meta name="keywords" content="SPA, Masajes, Relajación, Belleza" />
+  <title>Signin</title>
+
+  <!-- Link del bootstrap -->
+  <link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css" />
+
+  <!-- estilos personalizados -->
+  <link rel="stylesheet" href="style/signin.css" />
+
+  <!-- fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Economica&display=swap" rel="stylesheet" />
+
+  <!-- clarity -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "8qugp4x972");
+  </script>
+</head>
+
+<body class="text-center">
+  <div class="container-fluid">
+    <div class="m-auto my-5">
+      <img src="img/LogoPNG.png" alt="Logo MySpa" width="auto" height="100" />
+      <p class="marca">MYSPA</p>
+      <h1 class="h3 my-4 fw-normal">Regístrate</h1>
+    </div>
+    <div class="text-start mb-4 w-75 m-auto">
+      <form class="row g-3 my-2 mx-2">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtName" placeholder="Nombre" required />
+            <label for="txtName">Nombre</label>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtLastName1" placeholder="Apellido paterno" required />
+            <label for="txtLastName1">Apellido paterno</label>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtLastName2" placeholder="Apellido materno" />
+            <label for="txtLastName2">Apellido Materno</label>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="form-floating">
+            <select class="form-select" id="sltGender">
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <label for="floatingSelect">Género</label>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtRFC" placeholder="CURP"
+              pattern="[A-Z]{4}[0-9]{6}[A-Z-0-9]{3}"
+              title="El rfc consta de 4 letras mayúsculas, 6 dígitos y 3 dígitos alfanuméricos." />
+            <label for="txtRFC">RFC</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="txtEmail" placeholder="alguien@gmail.com" required />
+            <label for="txtEmail">Correo electrónico</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtPhone" placeholder="4771234567" required pattern="[0-9]{10}"
+              title="Se debe ingresar un número de 10 dígitos" />
+            <label for="txtPhone">Teléfono</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtAddress" placeholder="Domicilio" required />
+            <label for="txtAddress">Domicilio</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtUserName" placeholder="Usuario" required />
+            <label for="txtUserName">Nombre de usuario</label>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="txtPassword" placeholder="Password" required />
+            <label for="txtPassword">Contraseña</label>
+          </div>
+        </div>
+        <div class="col-12 mt-4 text-center">
+          <button type="submit" class="btn btn-primary">Regístrame</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Primero va el Script de Jquery-->
+  <script type="text/javascript" src="js/jquery/jquery-3.6.0.min.js"></script>
+
+  <!-- Despues el Script de Bootstrap -->
+  <script type="text/javascript" src="style/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

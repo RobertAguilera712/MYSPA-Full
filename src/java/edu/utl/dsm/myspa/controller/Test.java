@@ -10,7 +10,7 @@ import edu.utl.dsm.myspa.model.Persona;
 public class Test {
 
     public static void main(String[] args) {
-		probarDelete();
+		probarInsert();
     }
     
     public static void probarGetAll() {
@@ -29,13 +29,19 @@ public class Test {
     public static void probarInsert() {
         try {
             ControllerCliente cc = new ControllerCliente();
-            Persona p = new Persona("Nom", "ApP", "ApM", "Dom", "Tel", "RFC", "H");
-            Usuario u = new Usuario("Nombre", "Apellido", "123", null);
+            Persona p = new Persona("Carlos", "Velazco", "Hernandez", "Calle falsa 1234", "4774009871",
+			"AUAR011207AN1", "H");
+            Usuario u = new Usuario("IvanHK", "12345", "Hacker", null);
 
-            Cliente c = new Cliente(1, "5ATSTAY", "nombre@hot", p, u);
+            Cliente c = new Cliente();
+
+			c.setEstatus(1);
+			c.setCorreo("rovygamer@gmail.com");
+			c.setPersona(p);
+			c.setUsuario(u);
 
             int idG = cc.insert(c);
-            System.err.println(idG);
+            System.out.println(idG);
         } catch (Exception ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }

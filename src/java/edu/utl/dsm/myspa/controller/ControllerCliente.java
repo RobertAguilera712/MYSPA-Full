@@ -27,14 +27,15 @@ public class ControllerCliente {
                 + //Datos Persona
                 "?, ?, ?, "
                 + //Datos Usuario
-                "?, ?, "
+                "?,"
                 + //Datos Cliente
-                "?, ?, ?)}"; //Valores de Retorno
+                "?, ?, ?, ?)}"; //Valores de Retorno
 
         //Aquí guardaremoslos ID's que se generarán:
         int idPersonaGenerado = -1;
         int idUsuarioGenerado = -1;
         int idClienteGenerado = -1;
+		String numeroUnicoGenerado = "";
 
         //Con este objeto nos vamos a conectar a la Base de Datos:
         ConexionMySQL connMySQL = new ConexionMySQL();
@@ -62,25 +63,28 @@ public class ControllerCliente {
 
         //Establecemos los parámetros de los datos de Cliente:        
         cstmt.setString(11, c.getCorreo());
-        cstmt.setString(12, c.getNumeroUni());
 
         //Registramos los parámetros de salida:
+        cstmt.registerOutParameter(12, Types.INTEGER);
         cstmt.registerOutParameter(13, Types.INTEGER);
         cstmt.registerOutParameter(14, Types.INTEGER);
-        cstmt.registerOutParameter(15, Types.INTEGER);
+        cstmt.registerOutParameter(15, Types.VARCHAR);
 
         //Ejecutamos el Stored Procedure:
         cstmt.executeUpdate();
 
         //Recuperamos los ID's generados:
-        idPersonaGenerado = cstmt.getInt(13);
-        idUsuarioGenerado = cstmt.getInt(14);
-        idClienteGenerado = cstmt.getInt(15);
+        idPersonaGenerado = cstmt.getInt(12);
+        idUsuarioGenerado = cstmt.getInt(13);
+        idClienteGenerado = cstmt.getInt(14);
+        numeroUnicoGenerado = cstmt.getString(15);
+
 
         //Los guardamos en el objeto Cliente que nos pasaron como parámetro:
         c.getPersona().setId(idPersonaGenerado);
         c.getUsuario().setId(idUsuarioGenerado);
         c.setId(idClienteGenerado);
+		c.setNumeroUni(numeroUnicoGenerado);
 
         //Cerramos los objetos de Base de Datos:
         cstmt.close();
