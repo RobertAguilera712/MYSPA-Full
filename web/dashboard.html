@@ -29,8 +29,14 @@
     <div class="header_toggle">
       <i class="bx bx-menu" id="header-toggle"></i>
     </div>
-    <div class="header_img">
-      <img src="img/user1.svg" alt="user" />
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        <img src="img/user1.svg" height="35" width="35" alt="user" />
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" role="button" onclick="cerrarSesion()">Salir</a></li>
+      </ul>
     </div>
   </header>
   <div class="l-navbar" id="nav-bar">

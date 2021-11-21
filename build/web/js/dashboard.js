@@ -1,3 +1,8 @@
+
+if (!sessionStorage.getItem("empleado")) {
+  window.location.href = "login.html";
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
   const showNavbar = (toggleId, navId, bodyId, headerId) => {
     const toggle = document.getElementById(toggleId),
@@ -9,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (toggle && nav && bodypd && headerpd) {
       toggle.addEventListener("click", () => {
         // show navbar
-        nav.classList.toggle("show");
+        nav.classList.toggle("showDashboard");
         // change icon
         toggle.classList.toggle("bx-x");
         // add padding to body
@@ -35,3 +40,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // Your code to run since DOM is loaded and ready
 });
+
+function cerrarSesion() {
+  sessionStorage.clear();
+  window.location.href = "login.html";
+
+}

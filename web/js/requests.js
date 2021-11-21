@@ -13,15 +13,19 @@ async function makeJSONRequestGET(url) {
 }
 
 async function makeJSONRequestPOST(url, body) {
-    const response = await fetch((url), {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: body
-    });
-    const jsonData = await response.json();
-    return jsonData;
+    try {
+        const response = await fetch((url), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: body
+        });
+        const json = await response.json();
+        return json;
+    } catch (error) {
+        return "Error de conexión";
+    }
 }
 
 async function test() {
