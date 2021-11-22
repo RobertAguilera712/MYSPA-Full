@@ -45,7 +45,7 @@ function putRegisterInForm(register) {
 
 
 	imgs.forEach(img => {
-		img.src = "data:image/webp;base64," + eval(`register.${img.getAttribute("key")}`).replaceAll(" ", "+");
+		img.src = "data:image/webp;base64," + eval(`register.${img.getAttribute("key")}`);
 	});
 }
 
@@ -75,7 +75,7 @@ function populateTable() {
 			let cell = row.insertCell();
 			if (key === "foto") {
 				const img = new Image()
-				const src = eval(`register.${key}`).replaceAll(" ", "+");
+				const src = eval(`register.${key}`);
 				if (src.length > 0) {
 					img.src = "data:image/webp;base64," + src;
 					img.height = 100;
@@ -153,7 +153,8 @@ function saveGet(register, moduleName) {
 	let url, onDone, alertTitle;
 	let alertConfirmationText, alertDismissText;
 	if (!register.hasOwnProperty("id")) {
-		url = `api/${moduleName}/insert?new=${JSON.stringify(register)}`;
+		url = `api/${moduleName}/insert?new=${(encodeURIComponent(JSON.stringify(register)))}`;
+		console.log(url);
 		alertTitle = "¿Quieres guardar el nuevo registro?";
 		alertConfirmationText = "Si, guardarlo";
 		alertDismissText = "No, cancelar";
@@ -162,7 +163,8 @@ function saveGet(register, moduleName) {
 			waitAlert("Registro guardado correctamente", "El nuevo registro se guardo en la base de datos", "success");
 		}
 	} else {
-		url = `api/${moduleName}/update?new=${JSON.stringify(register)}`;
+		url = `api/${moduleName}/update?new=${encodeURIComponent(JSON.stringify(register))}`;
+		console.log(url);
 		alertTitle = "¿Quieres guardar los cambios";
 		alertConfirmationText = "Si, guardarlos";
 		alertDismissText = "No, cancelar";
@@ -188,7 +190,7 @@ function savePOST(register, moduleName) {
 	let alertConfirmationText, alertDismissText;
 	if (!register.hasOwnProperty("id")) {
 		url = `api/${moduleName}/insert`;
-		body = `new=${JSON.stringify(register)}`
+		body = `new=${encodeURIComponent(JSON.stringify(register))}`
 		alertTitle = "¿Quieres guardar el nuevo registro?";
 		alertConfirmationText = "Si, guardarlo";
 		alertDismissText = "No, cancelar";
@@ -198,7 +200,7 @@ function savePOST(register, moduleName) {
 		}
 	} else {
 		url = `api/${moduleName}/update`;
-		body = `new=${JSON.stringify(register)}`
+		body = `new=${encodeURIComponent(JSON.stringify(register))}`
 		alertTitle = "¿Quieres guardar los cambios?";
 		alertConfirmationText = "Si, guardarlos";
 		alertDismissText = "No, cancelar";

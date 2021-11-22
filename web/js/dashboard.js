@@ -4,9 +4,9 @@ async function loadDashboard() {
 	if (sessionStorage.getItem("empleado")) {
 		empleado = JSON.parse(sessionStorage.getItem("empleado"));
 		await loadHTML("modules/mainDashboard.html")
-		document.getElementById("nombreEmpleado").textContent = empleado.nombre;
+		document.getElementById("nombreEmpleado").textContent = empleado.persona.nombre;
 		if (empleado.foto.length > 0) {
-			document.getElementById("fotoEmpleado").src = "data:image/webp;base64," + empleado.foto.replaceAll(" ", "+");
+			document.getElementById("fotoEmpleado").src = "data:image/webp;base64," + empleado.foto
 		}
 	} else {
 		window.location.href = "login.html";

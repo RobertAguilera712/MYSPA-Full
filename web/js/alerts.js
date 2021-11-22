@@ -43,7 +43,7 @@ function waitAlert(title, message, icon) {
 
 function alertaGuardarNuevo(confirmedFunction, dismissedFunction) {
     confirmationAlert("¿Quieres guardar el nuevo registro?", "Si, guardarlo",
-        "No, cancelar", "question", confirmedFunction, dismissedFunction);
+        "No, cancelar", "question", confirmedFunction, alertaCambiosCancelados);
 }
 
 function alertarNuevoGuardado() {
