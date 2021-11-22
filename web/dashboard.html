@@ -21,10 +21,9 @@
 
   <!-- own css -->
   <link href="style/dashboard.css" rel="stylesheet">
-  </link>
 </head>
 
-<body id="body-pd">
+<body id="body-pd" onload="loadDashboard()">
   <header class="header" id="header">
     <div class="header_toggle">
       <i class="bx bx-menu" id="header-toggle"></i>
@@ -32,34 +31,34 @@
     <div class="dropdown">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
         aria-expanded="false">
-        <img src="img/user1.svg" height="35" width="35" alt="user" />
+        <img src="img/user1.svg" id="fotoEmpleado" height="35" alt="user" />
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" role="button" onclick="verDatos()">Ver mis datos</a></li>
         <li><a class="dropdown-item" role="button" onclick="cerrarSesion()">Salir</a></li>
       </ul>
     </div>
   </header>
   <div class="l-navbar" id="nav-bar">
     <nav class="nav">
-      <div>
-        <a href="index.html" class="nav_logo">
+      <div class="nav_list">
+        <a role="button" class="nav_link" onclick="loadDashboard()">
           <i class="fas fa-spa nav_logo-icon"></i>
           <span class="nav_logo-name">MySPA</span>
         </a>
-        <div class="nav_list">
-          <a role="button" class="nav_link" onclick="loadBranchesTable()">
-            <i class="fas fa-map-marker-alt nav_icon"></i>
-            <span class="nav_name">Sucursales</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadEmployeesTable()">
-            <i class="fas fa-people-carry nav_icon"></i>
-            <span class="nav_name">Empleados</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadCustomersTable()">
-            <i class="fas fa-users nav_icon"></i>
-            <span class="nav_name">Clientes</span>
-          </a>
-        </div>
+        <a role="button" class="nav_link" onclick="loadBranchesTable()">
+          <i class="fas fa-map-marker-alt nav_icon"></i>
+          <span class="nav_name">Sucursales</span>
+        </a>
+        <a role="button" class="nav_link" onclick="loadEmployeesTable()">
+          <i class="fas fa-people-carry nav_icon"></i>
+          <span class="nav_name">Empleados</span>
+        </a>
+        <a role="button" class="nav_link" onclick="loadCustomersTable()">
+          <i class="fas fa-users nav_icon"></i>
+          <span class="nav_name">Clientes</span>
+        </a>
+      </div>
     </nav>
   </div>
   <div class="w-100 bg-light pt-2" id="content">

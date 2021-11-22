@@ -1,39 +1,47 @@
 <div class="container-fluid">
-    <h1 class="text-center my-3">Empleados</h1>
+    <h1 class="text-center my-3">Mis datos</h1>
     <form class="row" id="form" onsubmit="saveEmployee(event)">
         <input type="text" id="txtId" key="id" hidden>
         <input type="text" id="txtIdPersona" key="persona.id" hidden>
         <input type="text" id="txtIdUsuario" key="usuario.id" hidden>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
-                <input type="text" id="txtName" class="form-control" placeholder="Nombre" key="persona.nombre" required>
+                <input type="text" id="txtNumeroEmpleado" class="form-control" placeholder="Numero de empleado"
+                    disabled>
+                <label for="txtNumeroEmpleado">Numero de empleado</label>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="text" id="txtName" class="form-control" placeholder="Nombre" key="persona.nombre" disabled
+                    required>
                 <label for="txtName">Nombre</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
                 <input type="text" id="txtApellidoP" class="form-control" placeholder="Apellido paterno"
-                    key="persona.apellidoP" required>
+                    key="persona.apellidoP" disabled required>
                 <label for="txtApellidoP">Apellido paterno</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
                 <input type="text" id="txtApellidoM" class="form-control" placeholder="Apellido materno"
-                    key="persona.apellidoM" required>
+                    key="persona.apellidoM" disabled required>
                 <label for="txtApellidoM">Apellido materno</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
                 <input type="text" id="txtDomicilio" class="form-control" placeholder="Domicilio"
-                    key="persona.domicilio" required>
+                    key="persona.domicilio" disabled required>
                 <label for="txtDomicilio">Domicilio</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
-                <select class="form-select" id="txtGenero" key="persona.genero" required>
+                <select class="form-select" id="txtGenero" key="persona.genero" disabled required>
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                     <option value="O">Otro</option>
@@ -43,46 +51,49 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
-                <input type="text" id="txtRfc" class="form-control" placeholder="RFC" key="persona.rfc" required>
+                <input type="text" id="txtRfc" class="form-control" placeholder="RFC" key="persona.rfc" disabled
+                    required>
                 <label for="txtRfc">RFC</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
                 <input type="text" id="txtTelefono" class="form-control" placeholder="Telefono" key="persona.telefono"
-                    required>
+                    disabled required>
                 <label for="txtTelefono">Teléfono</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
-                <input type="text" id="txtPuesto" class="form-control" placeholder="Puesto" key="puesto" required>
+                <input type="text" id="txtPuesto" class="form-control" placeholder="Puesto" key="puesto" disabled
+                    required>
                 <label for="txtPuesto">Puesto</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
                 <input type="text" id="txtUsuario" class="form-control" placeholder="Usuario" key="usuario.nombreUsu"
-                    required>
+                    disabled required>
                 <label for="txtUsuario">Usuario</label>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 my-3">
             <div class="form-floating">
                 <input type="password" id="txtPassword" class="form-control" placeholder="Contraseña"
-                    key="usuario.contrasenia" required>
+                    key="usuario.contrasenia" disabled required>
                 <label for="txtPassword">Contraseña</label>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 my-3 align-self-center">
             <div>
-                <button type="button" class="btn btn-secondary me-2" id="btnUploadImg">Cargar imagen</button>
+                <button type="button" class="btn btn-secondary me-2" id="btnUploadImg" disabled>Cargar imagen</button>
                 <img src="" alt="No ha seleccionado ninguna imagen" id="selectedImg" height="50" key="foto">
                 <input type="file" class="d-none" accept="image/png, image/jpeg" id="imgFile">
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <button class="btn btn-primary m-2">Guardar</button>
+            <button class="btn btn-warning m-2" type="button" onclick="modificarDatos()">Modificar</button>
+            <button class="btn btn-primary m-2" disabled>Guardar</button>
             <button class="btn btn-danger m-2" onclick="loadEmployeesTable()" type="button">Regresar</button>
         </div>
     </form>

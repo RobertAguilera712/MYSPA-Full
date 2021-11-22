@@ -23,6 +23,8 @@ function saveEmployee(e) {
 
 function getEmployeeFromForm() {
     const id = document.getElementById("txtId").value;
+    const idPersona = document.getElementById("txtIdPersona").value;
+    const idUsuario = document.getElementById("txtIdUsuario").value;
     const name = document.getElementById("txtName").value;
     const lastName = document.getElementById("txtApellidoP").value;
     const mLastName = document.getElementById("txtApellidoM").value;
@@ -33,12 +35,12 @@ function getEmployeeFromForm() {
     const job = document.getElementById("txtPuesto").value;
     const user = document.getElementById("txtUsuario").value;
     const password = document.getElementById("txtPassword").value;
-    const photo = document.getElementById("selectedImg").src;
+    const photo = document.getElementById("selectedImg").src.replace(/data:image\/.*;base64,/, "");
 
     const employee = {
         "id": id,
         "persona": {
-            "id": id,
+            "id": idPersona,
             "nombre": name,
             "apellidoP": lastName,
             "apellidoM": mLastName,
@@ -48,7 +50,7 @@ function getEmployeeFromForm() {
             "telefono": phone
         },
         "usuario": {
-            "id": id,
+            "id": idUsuario,
             "nombreUsu": user,
             "contrasenia": password,
             "rol": job
