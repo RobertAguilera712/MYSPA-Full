@@ -21,6 +21,8 @@ function saveEmployee(e) {
     savePOST(employee, "employee");
 }
 
+
+
 function getEmployeeFromForm() {
     const id = document.getElementById("txtId").value;
     const idPersona = document.getElementById("txtIdPersona").value;

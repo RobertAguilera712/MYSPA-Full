@@ -83,7 +83,7 @@ public class SucursalRest extends Application {
 	@Path("update")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update(@QueryParam("new") String s){
+	public Response update(@QueryParam("new") String s) {
 		String out;
 
 		Gson gson = new Gson();
@@ -108,7 +108,7 @@ public class SucursalRest extends Application {
 	@Path("search")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status){
+	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status) {
 		String out;
 		Gson gson = new Gson();
 
@@ -127,4 +127,3 @@ public class SucursalRest extends Application {
 	}
 
 }
-

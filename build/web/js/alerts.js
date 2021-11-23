@@ -40,3 +40,24 @@ function waitAlert(title, message, icon) {
         timer: 1500
     });
 }
+
+function alertaGuardarNuevo(confirmedFunction) {
+    confirmationAlert("¿Quieres guardar el nuevo registro?", "Si, guardarlo",
+        "No, cancelar", "question", confirmedFunction, alertaCambiosCancelados);
+}
+
+function alertaGuardarCambios(confirmedFunction) {
+    confirmationAlert("¿Quieres guardar los cambios?", "Si guardarlos", "No cancelar", "question", confirmedFunction, alertaCambiosCancelados);
+}
+
+function alertarNuevoGuardado() {
+    waitAlert("Registro guardado correctamente", "El nuevo registro se guardo en la base de datos", "success");
+}
+
+function alertaCambiosGuardados() {
+    waitAlert("Registro modificado correctamente", "El registro se modificó correctamente", "success");
+}
+
+function alertaCambiosCancelados() {
+    waitAlert("Cambios cancelados", "No se guardaron los cambios", "error");
+}

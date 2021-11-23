@@ -1,3 +1,20 @@
+async function loadHTML(url) {
+	const doc = await makeHTMLRequest(url);
+	document.getElementById("content").innerHTML = doc.body.innerHTML;
+	doc.querySelectorAll("script").forEach(script => {
+		eval(script.innerHTML);
+	});
+}
+
+function getBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = error => reject(error);
+	});
+}
+
 function makeBtn(className, text) {
 	const btn = document.createElement("button");
 	btn.className = className;

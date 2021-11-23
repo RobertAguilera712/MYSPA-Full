@@ -1,29 +1,3 @@
-let empleado;
-
-async function loadDashboard() {
-	if (sessionStorage.getItem("empleado")) {
-		empleado = JSON.parse(sessionStorage.getItem("empleado"));
-		await loadHTML("modules/mainDashboard.html")
-		document.getElementById("nombreEmpleado").textContent = empleado.persona.nombre;
-		if (empleado.foto.length > 0) {
-			document.getElementById("fotoEmpleado").src = "data:image/webp;base64," + empleado.foto
-		}
-	} else {
-		window.location.href = "login.html";
-	}
-}
-
-async function verDatos() {
-	await loadHTML("modules/datosEmpleado.html");
-	putRegisterInForm(empleado);
-}
-
-function modificarDatos() {
-	document.querySelectorAll("[disabled]:not(#txtNumeroEmpleado)").forEach(node => {
-		node.removeAttribute("disabled");
-	})
-}
-
 document.addEventListener("DOMContentLoaded", function (event) {
 	const showNavbar = (toggleId, navId, bodyId, headerId) => {
 		const toggle = document.getElementById(toggleId),
@@ -62,8 +36,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	// Your code to run since DOM is loaded and ready
 });
 
-function cerrarSesion() {
-	sessionStorage.clear();
-	window.location.href = "login.html";
-
-}

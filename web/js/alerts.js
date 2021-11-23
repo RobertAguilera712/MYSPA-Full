@@ -41,9 +41,13 @@ function waitAlert(title, message, icon) {
     });
 }
 
-function alertaGuardarNuevo(confirmedFunction, dismissedFunction) {
+function alertaGuardarNuevo(confirmedFunction) {
     confirmationAlert("¿Quieres guardar el nuevo registro?", "Si, guardarlo",
         "No, cancelar", "question", confirmedFunction, alertaCambiosCancelados);
+}
+
+function alertaGuardarCambios(confirmedFunction) {
+    confirmationAlert("¿Quieres guardar los cambios?", "Si guardarlos", "No cancelar", "question", confirmedFunction, alertaCambiosCancelados);
 }
 
 function alertarNuevoGuardado() {

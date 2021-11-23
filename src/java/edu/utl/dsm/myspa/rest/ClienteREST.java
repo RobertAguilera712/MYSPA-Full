@@ -19,11 +19,11 @@ import javax.ws.rs.core.Response;
 @Path("cliente")
 public class ClienteREST extends Application {
 
-    @Path("getAll")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(@QueryParam("e") String e) {
-        String out;
+	@Path("getAll")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAll(@QueryParam("e") String e) {
+		String out;
 
 		ControllerCliente ce = new ControllerCliente();
 		Gson gs = new Gson();
@@ -35,13 +35,13 @@ public class ClienteREST extends Application {
 		}
 
 		return Response.status(Response.Status.OK).entity(out).build();
-    }
+	}
 
-    @Path("insert")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(@FormParam("new") @DefaultValue("") String cliente) {
-        String out = "";
+	@Path("insert")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response insert(@FormParam("new") @DefaultValue("") String cliente) {
+		String out = "";
 		try {
 			Gson objGS = new Gson();
 
@@ -56,13 +56,13 @@ public class ClienteREST extends Application {
 					+ "vuelve a intentarlo, o llama al administrador del sistema %s\"}", ex.toString());
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
-    }
+	}
 
-    @Path("update")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@FormParam("new") @DefaultValue("") String cliente) {
-        String out = "";
+	@Path("update")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response update(@FormParam("new") @DefaultValue("") String cliente) {
+		String out = "";
 		try {
 			Gson objGS = new Gson();
 			Cliente objC = objGS.fromJson(cliente, Cliente.class);
@@ -74,12 +74,12 @@ public class ClienteREST extends Application {
 					+ "vuelve a intentarlo, o llama al administrador del sistema %s\"}", ex.toString());
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
-    }
+	}
 
-    @Path("search")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-   public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status) {
+	@Path("search")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status) {
 		String out;
 		Gson gson = new Gson();
 
@@ -97,19 +97,36 @@ public class ClienteREST extends Application {
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
 
-    @Path("delete")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@QueryParam("id") String id) {
-        String out = "";
-        try {
-            ControllerCliente objCC = new ControllerCliente();
-            objCC.delete(Integer.parseInt(id));
-            out = "{\"result\":\"La eliminación resultó exitosa\"}";
-        } catch (Exception e) {
-            e.printStackTrace();
-            out = "{\"error\":\"Hubo un fallo en la eliminación\"}";
-        }
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
+	@Path("delete")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response delete(@QueryParam("id") String id) {
+		String out = "";
+		try {
+			ControllerCliente objCC = new ControllerCliente();
+			objCC.delete(Integer.parseInt(id));
+			out = "{\"result\":\"La eliminación resultó exitosa\"}";
+		} catch (Exception e) {
+			e.printStackTrace();
+			out = "{\"error\":\"Hubo un fallo en la eliminación\"}";
+		}
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
+
+	@Path("login")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response in(@FormParam("usuario") @DefaultValue("0") String usuario, @FormParam("password") @DefaultValue("0") String password) {
+		String out = "";
+		try {
+			ControllerCliente cc = new ControllerCliente();
+			Cliente c = cc.login(usuario, password);
+			Gson objGS = new Gson();
+			out = objGS.toJson(c);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			out = "{\"error\":\"Hubo un fallo en el acceso, verifica la información. \"}";
+		}
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
 }

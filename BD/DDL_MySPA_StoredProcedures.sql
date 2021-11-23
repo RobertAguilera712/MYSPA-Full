@@ -1,3 +1,4 @@
+
 USE myspa;
  
 DROP PROCEDURE IF EXISTS insertarEmpleado;
@@ -145,24 +146,23 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS actualizarCliente;
 DELIMITER $$
-CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64),
-                                        IN  var_apellidoPaterno VARCHAR(64),
-                                        IN  var_apellidoMaterno VARCHAR(64),
-                                        IN  var_genero          VARCHAR(2),
-                                        IN  var_domicilio       VARCHAR(200),
-                                        IN  var_telefono        VARCHAR(25),
-                                        IN  var_rfc             VARCHAR(14),
+CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64), -- 1
+                                        IN  var_apellidoPaterno VARCHAR(64), -- 2
+                                        IN  var_apellidoMaterno VARCHAR(64), -- 3 
+                                        IN  var_genero          VARCHAR(2),  -- 4
+                                        IN  var_domicilio       VARCHAR(200), -- 5
+                                        IN  var_telefono        VARCHAR(25), -- 6
+                                        IN  var_rfc             VARCHAR(14), -- 7
 
-                                        IN  var_nombreUsuario   VARCHAR(48),
-                                        IN  var_contrasenia     VARCHAR(48),
-                                        IN  var_rol             VARCHAR(24),
+                                        IN  var_nombreUsuario   VARCHAR(48), -- 8
+                                        IN  var_contrasenia     VARCHAR(48), -- 9
+                                        IN  var_rol             VARCHAR(24), -- 10
 
-                                        IN  var_correo          VARCHAR(68),
-                                        IN  var_numeroUnico     VARCHAR(11),
+                                        IN  var_correo          VARCHAR(68), -- 11
                                         
-                                        IN var_idPersona        INT,
-                                        IN var_idUsuario        INT,
-                                        IN var_idCliente        INT
+                                        IN var_idPersona        INT, -- 12
+                                        IN var_idUsuario        INT, -- 13
+                                        IN var_idCliente        INT -- 14
                                     )
     BEGIN
         UPDATE  persona SET     nombre = var_nombre, 
@@ -174,14 +174,19 @@ CREATE PROCEDURE actualizarCliente(     IN  var_nombre          VARCHAR(64),
                                 rfc = var_rfc
                         WHERE   idPersona = var_idPersona;
 
-        UPDATE  usuario SET     nombreUsuario = var_nombreUsuario, 
-                                contrasenia = var_contrasenia,
-                                rol = var_rol
-                        WHERE   idUsuario = var_idUsuario;
+UPDATE usuario 
+SET 
+    nombreUsuario = var_nombreUsuario,
+    contrasenia = var_contrasenia,
+    rol = var_rol
+WHERE
+    idUsuario = var_idUsuario;
 
-        UPDATE  cliente SET     correo = var_correo,
-                                numeroUnico = var_numeroUnico
-                        WHERE   idCliente = var_idCliente;
+UPDATE cliente 
+SET 
+    correo = var_correo
+WHERE
+    idCliente = var_idCliente;
 
     END
 $$

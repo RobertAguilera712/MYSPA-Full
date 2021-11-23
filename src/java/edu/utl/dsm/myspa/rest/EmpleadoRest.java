@@ -117,4 +117,21 @@ public class EmpleadoRest extends Application {
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
 
+	@Path("login")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response in(@FormParam("usuario") @DefaultValue("0") String usuario, @FormParam("password") @DefaultValue("0") String password) {
+		String out = "";
+		try {
+			ControllerEmpleado ce = new ControllerEmpleado();
+			Empleado e = ce.login(usuario, password);
+			Gson objGS = new Gson();
+			out = objGS.toJson(e);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			out = "{\"error\":\"Hubo un fallo en el acceso, verifica la información. \"}";
+		}
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
 }
+

@@ -22,18 +22,9 @@
 
     <!-- Custom styles for this template -->
     <link href="style/login.css" rel="stylesheet">
-
-    <!-- clarity -->
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "8qugp4x972");
-    </script>
 </head>
 
-<body class="text-center">
+<body class="text-center" onload="askUserType()">
     <main class="form-signin">
         <form id="login-form">
             <img src="img/LogoPNG.png" alt="" width="auto" height="100">
@@ -48,7 +39,7 @@
                 <input type="password" class="form-control" id="txtPassword" placeholder="Contraseña">
                 <label for="txtPassword">Contraseña</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary">Entrar</button>
+            <button class="w-100 btn btn-lg btn-primary" id="btnIniciar">Entrar</button>
             <p class="mt-5 mb-3 text-muted">&copy; Cloudy Mind 2021</p>
         </form>
     </main>

@@ -288,6 +288,33 @@ public class ControllerEmpleado
         //Devolvemos la lista dinámica con objetos de tipo Empleado dentro:
         return empleados;
     }
+
+    public Empleado login(String nombreU, String contra)throws Exception{
+        //Definir la consulta que se va a ejecutar
+        String query = "SELECT * FROM v_empleados WHERE nombreUsuario=? AND contrasenia=? AND estatus=1;";
+        //Generar el objeto de la conexion
+        ConexionMySQL connMySQL = new ConexionMySQL();
+        //Abrir Conexión
+        Connection conn = connMySQL.open();
+        //Objeto para ejecutar la consulta
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        //Llenar los parametros de la consulta
+        pstmt.setString(1, nombreU);
+        pstmt.setString(2, contra);
+        //Objeto para recibir los datos de la consulta
+        ResultSet rs = pstmt.executeQuery();
+        //objeto de tipo empleado
+        Empleado e = null;
+        if(rs.next()){
+            e=fill(rs);
+        }
+        //cerrar los objetos de uso para la BD
+        rs.close();
+        pstmt.close();
+        connMySQL.close();
+        //devuelve el objeto de tipo empleado
+        return e;
+    }
     
     private Empleado fill(ResultSet rs) throws Exception
     {

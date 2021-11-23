@@ -28,6 +28,7 @@ body {
   transition: 0.5s;
 }
 
+
 a {
   text-decoration: none;
 }
@@ -247,3 +248,11 @@ font-size:16px;
 #content{
   left: 0;
 }
+
+.marca{
+    margin: 0;
+    padding: 0;
+    font-family: 'Economica', sans-serif;
+    color: #4d381a !important;
+    font-size: 36px;
+  }

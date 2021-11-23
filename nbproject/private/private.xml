@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/web/js/dashboard.js</file>
-            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerLogin.java</file>
-            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/web/dashboard.html</file>
-            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/LoginREST.java</file>
-            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/web/js/login.js</file>
-            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/web/js/requests.js</file>
+            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerEmpleado.java</file>
+            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerCliente.java</file>
+            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/ClienteREST.java</file>
+            <file>file:/home/kasparov/NetBeansProjects/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/EmpleadoRest.java</file>
         </group>
     </open-files>
 </project-private>

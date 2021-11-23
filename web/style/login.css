@@ -54,12 +54,12 @@ body {
   border-top-right-radius: 0;
 }
 
-.btn-primary{
+#btnIniciar{
     background-color: var(--olive-drab-3) !important;
     border: none;
     width: 25%;
 }
 
-.btn-primary:hover{
+#btnIniciar:hover{
     background-color: rgba(128, 153, 25, 0.8) !important;
 }
