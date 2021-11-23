@@ -100,7 +100,9 @@ async function search(moduleName) {
 	const filter = `${searchBy} LIKE "%${searchQuery}%"`;
 	const status = document.getElementById("sltStatus").value;
 
-	const url = `api/${moduleName}/search?filter=${filter}&e=${status}`;
+	const url = `api/${moduleName}/search?filter=${encodeURIComponent(filter)}&e=${status}`;
+
+	console.log(url);
 
 	jsonArray = await makeJSONRequestGET(url);
 

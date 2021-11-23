@@ -133,7 +133,7 @@ public class ControllerSucursal {
     
     public void update(Sucursal s) throws Exception{
         //Generar la consulta SQL
-        String query = "UPDATE sucursal SET nombre = ?, domicilio = ?, latitud = ?, longitud = ?, estatus = ? WHERE idSucursal = ?;";
+        String query = "UPDATE sucursal SET nombre = ?, domicilio = ?, latitud = ?, longitud = ? WHERE idSucursal = ?;";
         
         //Generar el objeto de conexión y abrirla
         ConexionMySQL connMySQL = new ConexionMySQL();
@@ -147,8 +147,7 @@ public class ControllerSucursal {
         pstmt.setString(2, s.getDomicilio());
         pstmt.setDouble(3, s.getLatitud());
         pstmt.setDouble(4, s.getLongitud());
-        pstmt.setInt(5, s.getEstatus());
-        pstmt.setInt(6, s.getId());
+        pstmt.setInt(5, s.getId());
         
         //Ejecutamos la consulta
         pstmt.executeUpdate();

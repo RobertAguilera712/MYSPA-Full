@@ -34,16 +34,21 @@ function saveGet(register, moduleName) {
     const body = `?new=${encodeURIComponent(JSON.stringify(register))}`;
     if (!register.hasOwnProperty("id")) {
         url += `insert${body}`
-        makeJSONRequestGET(url).then(response => {
-            alertarNuevoGuardado();
-            clearInputs();
+        alertaGuardarNuevo(() => {
+            makeJSONRequestGET(url).then(response => {
+                console.log(response);
+                alertarNuevoGuardado();
+                clearInputs();
+            });
         });
     } else {
         url += `update${body}`
-        makeJSONRequestGET(url).then(response => {
-            console.log(response);
-            alertaCambiosGuardados();
-            loadModuleTable(moduleName)
+        alertaGuardarCambios(() => {
+            makeJSONRequestGET(url).then(response => {
+                console.log(response);
+                alertaCambiosGuardados();
+                loadModuleTable(moduleName)
+            });
         });
     }
 }

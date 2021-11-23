@@ -71,10 +71,12 @@ public class ProductoRest {
         String out;
 		try{
 			CP.update(Utils.GSON.fromJson(p, Producto.class));
-            out = String.format("result", "Modificación exitosa");
+            out = String.format(Utils.JSON, "result", "Modificación exitosa");
 		}catch(Exception e){
 			out = String.format(Utils.ERROR, "la modificación",  e.toString());
 		}
+		
+		System.out.println(out);
 
 		return Response.status(Response.Status.OK).entity(out).build();
     }

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class ControllerProducto {
 
 	public int insert(Producto p) throws Exception {
-		String query = "INSERT INTO PRODUCTO (nombre, marca, estatus, precioUso) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO producto (nombre, marca, estatus, precioUso) VALUES (?, ?, ?, ?)";
 		int idGenerado = -1;
 
 		ConexionMySQL connMySQL = new ConexionMySQL();
