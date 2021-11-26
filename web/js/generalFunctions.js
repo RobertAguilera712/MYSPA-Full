@@ -33,3 +33,12 @@ function clearInputs() {
 	checkInputs.forEach(item => item.checked = false);
 	imgs.forEach(img => img.src = "");
 }
+
+
+function makeOption(text, value) {
+	const option = document.createElement("option");
+	option.value = value;
+	option.text = text;
+
+	return option;
+}

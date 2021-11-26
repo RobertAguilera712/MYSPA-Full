@@ -9,8 +9,13 @@ async function loadModuleTable(moduleName) {
 }
 
 async function getRegisters(moduleName) {
-	const status = document.getElementById("sltStatus").value;
+	let status = 1;
+	try {
+		status = document.getElementById("sltStatus").value;
+	} catch (error) {
+	}
 	const url = `api/${moduleName}/getAll?e=${status}`;
+	console.log(url);
 	const registers = await makeJSONRequestGET(url);
 	return registers
 }
