@@ -4,26 +4,26 @@ public class Sala {
     private int id;
     private String nombre;
     private String descripcion;
-    private String rutaFoto;
+    private String foto;
     private int estatus;
     private Sucursal sucursal;
 
     public Sala() {
     }
 
-    public Sala(int id, String nombre, String descripcion, String rutaFoto, int estatus, Sucursal sucursal) {
+    public Sala(int id, String nombre, String descripcion, String foto, int estatus, Sucursal sucursal) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.rutaFoto = rutaFoto;
+        this.foto = foto;
         this.estatus = estatus;
         this.sucursal = sucursal;
     }
 
-    public Sala(String nombre, String descripcion, String rutaFoto, int estatus, Sucursal sucursal) {
+    public Sala(String nombre, String descripcion, String foto, int estatus, Sucursal sucursal) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.rutaFoto = rutaFoto;
+        this.foto = foto;
         this.estatus = estatus;
         this.sucursal = sucursal;
     }
@@ -60,12 +60,12 @@ public class Sala {
         this.descripcion = descripcion;
     }
 
-    public String getRutaFoto() {
-        return rutaFoto;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setRutaFoto(String rutaFoto) {
-        this.rutaFoto = rutaFoto;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public int getEstatus() {
@@ -78,6 +78,6 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Sala{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", rutaFoto=" + rutaFoto + ", estatus=" + estatus + ", sucursal=" + sucursal + '}';
+        return "Sala{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", foto=" + foto + ", estatus=" + estatus + ", sucursal=" + sucursal + '}';
     }
 }
