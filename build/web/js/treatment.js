@@ -6,11 +6,11 @@ function searchTreatment() {
     search("treatment");
 }
 
-function refreshTreatmentesTable() {
+function refreshTreatmentsTable() {
     refreshTable("treatment");
 }
 
-function loadTreatmentesForm() {
+function loadTreatmentsForm() {
     loadModuleForm("treatment");
 }
 

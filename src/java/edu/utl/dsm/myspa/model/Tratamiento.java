@@ -2,7 +2,8 @@ package edu.utl.dsm.myspa.model;
 
 public class Tratamiento {
     private int id;
-    private String nombre, descripcion;
+    private String nombre; 
+    private String descripcion;
     private double costo;
     private int estatus;
 
