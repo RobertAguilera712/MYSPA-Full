@@ -77,7 +77,7 @@ CREATE VIEW v_sucursales_salas AS
             SA.rutaFoto,
             SA.estatus AS estatusSala
     FROM    sucursal SU
-            INNER JOIN sala SA ON SA.idSucursal = SU.idSucursal;
+            INNER JOIN sala SA ON SA.idSucursal = SU.idSucursal ORDER BY idSala;
 
 
 
