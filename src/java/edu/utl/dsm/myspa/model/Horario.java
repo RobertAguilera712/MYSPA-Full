@@ -4,6 +4,7 @@ public class Horario {
     private int id;
     private String horaI;
     private String horaF;
+	private int estatus;
 
     public Horario() {
     }
@@ -42,6 +43,16 @@ public class Horario {
     public void setHoraI(String horaI) {
         this.horaI = horaI;
     }
+
+	public int getEstatus() {
+		return estatus;
+	}
+
+	public void setEstatus(int estatus) {
+		this.estatus = estatus;
+	}
+
+	
 
     @Override
     public String toString() {

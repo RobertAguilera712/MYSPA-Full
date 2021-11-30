@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <h1 class="text-center my-3">Horario</h1>
+    <form class="row" id="form" onsubmit="saveSchedule(event)">
+        <input type="text" id="txtIdHorario" key="id" hidden>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="time" id="txtHoraI" class="form-control" placeholder="hora inicio " key="horaI" required>
+                <label for="txtHoraI">Hora Inicio </label>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 my-3">
+            <div class="form-floating">
+                <input type="time" id="txtHoraF" class="form-control" placeholder="Hora Final"
+                    key="horaF" required>
+                <label for="txtHoraF">Hora Final</label>
+            </div>
+        </div>
+        
+       
+        <div class="col-12 d-flex justify-content-center">
+            <button class="btn btn-primary m-2">Guardar</button>
+            <button class="btn btn-danger m-2" onclick="loadScheduleTable()" type="button">Regresar</button>
+        </div>
+    </form>
+</div>

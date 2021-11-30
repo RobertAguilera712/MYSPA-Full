@@ -1,136 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Administración MySpa</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Cloudy Mind" />
-    <meta name="description" content="MYSPA login" />
-    <meta name="keywords" content="SPA, Masajes, Relajación" />
-    <!-- Bootstrap link -->
-    <link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css" />
-    <!-- font awesome link -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="style/font_awesome_5_15_3/css/all.css"
-    />
-    <!-- sweet alert link -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="style/sweetalert2/sweetalert2.min.css"
-    />
-    <!--Boc icons link-->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
-    />
+	<head>
+		<title>Administración MySpa</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="author" content="Cloudy Mind" />
+		<meta name="description" content="MYSPA login" />
+		<meta name="keywords" content="SPA, Masajes, Relajación" />
+		<!-- Bootstrap link -->
+		<link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css" />
+		<!-- font awesome link -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="style/font_awesome_5_15_3/css/all.css"
+			/>
+		<!-- sweet alert link -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="style/sweetalert2/sweetalert2.min.css"
+			/>
+		<!--Boc icons link-->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+			/>
 
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css"
-    />
+		<link
+			rel="stylesheet"
+			href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css"
+			/>
 
-    <!-- own css -->
-    <link href="style/dashboard.css" rel="stylesheet" />
-  </head>
+		<!-- own css -->
+		<link href="style/dashboard.css" rel="stylesheet" />
+	</head>
 
-  <body id="body-pd" onload="loadDashboard()">
-    <header class="header" id="header">
-      <div class="header_toggle">
-        <i class="bx bx-menu" id="header-toggle"></i>
-      </div>
-      <div class="dropdown">
-        <button
-          class="btn dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img src="img/user1.svg" id="fotoEmpleado" height="35" alt="user" />
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <a class="dropdown-item" role="button" onclick="verDatos()"
-              >Ver mis datos</a
-            >
-          </li>
-          <li>
-            <a class="dropdown-item" role="button" onclick="cerrarSesion()"
-              >Salir</a
-            >
-          </li>
-        </ul>
-      </div>
-    </header>
-    <div class="l-navbar" id="nav-bar">
-      <nav class="nav">
-        <div class="nav_list">
-          <a role="button" class="nav_link" onclick="loadDashboard()">
-            <i class="fas fa-spa nav_logo-icon"></i>
-            <span class="nav_logo-name">MySPA</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadBranchesTable()">
-            <i class="fas fa-map-marker-alt nav_icon"></i>
-            <span class="nav_name">Sucursales</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadEmployeesTable()">
-            <i class="fas fa-people-carry nav_icon"></i>
-            <span class="nav_name">Empleados</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadCustomersTable()">
-            <i class="fas fa-users nav_icon"></i>
-            <span class="nav_name">Clientes</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadProductsTable()">
-            <i class="fas fa-spray-can nav_icon"></i>
-            <span class="nav_name">Productos</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadRoomTable()">
-            <i class="fas fa-person-booth nav_icon"></i>
-            <span class="nav_name">Salas</span>
-          </a>
-          <a role="button" class="nav_link" onclick="loadTreatmentsTable()">
-            <i class="fas fa-hand-sparkles nav_icon"></i>
-            <span class="nav_name">Tratamientos</span>
-          </a>
-        </div>
-      </nav>
-    </div>
-    <div class="w-100 bg-light pt-2" id="content"></div>
-  </body>
+	<body id="body-pd" onload="loadDashboard()">
+		<header class="header" id="header">
+			<div class="header_toggle">
+				<i class="bx bx-menu" id="header-toggle"></i>
+			</div>
+			<div class="dropdown">
+				<button
+					class="btn dropdown-toggle"
+					type="button"
+					id="dropdownMenuButton1"
+					data-bs-toggle="dropdown"
+					aria-expanded="false"
+					>
+					<img src="img/user1.svg" id="fotoEmpleado" height="35" alt="user" />
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+					<li>
+						<a class="dropdown-item" role="button" onclick="verDatos()"
+						   >Ver mis datos</a
+						>
+					</li>
+					<li>
+						<a class="dropdown-item" role="button" onclick="cerrarSesion()"
+						   >Salir</a
+						>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="l-navbar" id="nav-bar">
+			<nav class="nav">
+				<div class="nav_list">
+					<a role="button" class="nav_link" onclick="loadDashboard()">
+						<i class="fas fa-spa nav_logo-icon"></i>
+						<span class="nav_logo-name">MySPA</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadBranchesTable()">
+						<i class="fas fa-map-marker-alt nav_icon"></i>
+						<span class="nav_name">Sucursales</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadEmployeesTable()">
+						<i class="fas fa-people-carry nav_icon"></i>
+						<span class="nav_name">Empleados</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadCustomersTable()">
+						<i class="fas fa-users nav_icon"></i>
+						<span class="nav_name">Clientes</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadProductsTable()">
+						<i class="fas fa-spray-can nav_icon"></i>
+						<span class="nav_name">Productos</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadRoomTable()">
+						<i class="fas fa-person-booth nav_icon"></i>
+						<span class="nav_name">Salas</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadTreatmentsTable()">
+						<i class="fas fa-hand-sparkles nav_icon"></i>
+						<span class="nav_name">Tratamientos</span>
+					</a>
+					<a role="button" class="nav_link" onclick="loadScheduleTable()">
+						<i class="fas fa-clock nav_icon"></i>
+						<span class="nav_name">Horarios</span>
+					</a>
 
-  <!-- bootstrap script -->
-  <script
-    type="text/javascript"
-    src="style/bootstrap/js/bootstrap.bundle.js"
-  ></script>
-  <!-- sweet alert script  -->
-  <script
-    type="text/javascript"
-    src="style/sweetalert2/sweetalert2.min.js"
-  ></script>
-  <!-- font awesome script -->
-  <script
-    type="text/javascript"
-    src="style/font_awesome_5_15_3/js/all.js"
-  ></script>
+				</div>
+			</nav>
+		</div>
+		<div class="w-100 bg-light pt-2" id="content"></div>
+	</body>
 
-  <!-- own scripts -->
-  <!-- <script type="text/javascript" src="js/generalFunctions.js"></script> -->
-  <script type="text/javascript" src="js/alerts.js"></script>
-  <script type="text/javascript" src="js/dashboard.js"></script>
-  <script type="text/javascript" src="js/dashboardEmpleado.js"></script>
-  <script type="text/javascript" src="js/moduleTable.js"></script>
-  <script type="text/javascript" src="js/moduleForm.js"></script>
-  <script type="text/javascript" src="js/generalFunctions.js"></script>
-  <script type="text/javascript" src="js/requests.js"></script>
-  <script type="text/javascript" src="js/branches.js"></script>
-  <script type="text/javascript" src="js/employee.js"></script>
-  <script type="text/javascript" src="js/customer.js"></script>
-  <script type="text/javascript" src="js/products.js"></script>
-  <script type="text/javascript" src="js/room.js"></script>
-  <script type="text/javascript" src="js/treatment.js"></script>
+	<!-- bootstrap script -->
+	<script
+		type="text/javascript"
+		src="style/bootstrap/js/bootstrap.bundle.js"
+	></script>
+	<!-- sweet alert script  -->
+	<script
+		type="text/javascript"
+		src="style/sweetalert2/sweetalert2.min.js"
+	></script>
+	<!-- font awesome script -->
+	<script
+		type="text/javascript"
+		src="style/font_awesome_5_15_3/js/all.js"
+	></script>
+
+	<!-- own scripts -->
+	<!-- <script type="text/javascript" src="js/generalFunctions.js"></script> -->
+	<script type="text/javascript" src="js/alerts.js"></script>
+	<script type="text/javascript" src="js/dashboard.js"></script>
+	<script type="text/javascript" src="js/dashboardEmpleado.js"></script>
+	<script type="text/javascript" src="js/moduleTable.js"></script>
+	<script type="text/javascript" src="js/moduleForm.js"></script>
+	<script type="text/javascript" src="js/generalFunctions.js"></script>
+	<script type="text/javascript" src="js/requests.js"></script>
+	<script type="text/javascript" src="js/branches.js"></script>
+	<script type="text/javascript" src="js/employee.js"></script>
+	<script type="text/javascript" src="js/customer.js"></script>
+	<script type="text/javascript" src="js/products.js"></script>
+	<script type="text/javascript" src="js/room.js"></script>
+	<script type="text/javascript" src="js/treatment.js"></script>
+	<script type="text/javascript" src="js/schedule.js"></script>
+
 </html>
