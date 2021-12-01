@@ -100,7 +100,8 @@ CREATE TABLE horario
 (
     idHorario       INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     horaInicio      VARCHAR(10),
-    horaFin         VARCHAR(10)
+    horaFin         VARCHAR(10),
+    estatus         INT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE sala_horario
