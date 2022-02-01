@@ -37,7 +37,7 @@ document.getElementById("login-form").addEventListener("submit", e => {
         if (data) {
             if (data === "Error de conexión") {
                 normalAlert("Error de conexión", "No se pudo establecer conexión con el servidor. Por favor intentalo más tarde", "error");
-            } else {
+            } else if (data.id) {
                 const usuario = JSON.stringify(data);
                 if (userType === "EMPLEADO") {
                     sessionStorage.setItem("empleado", usuario);
@@ -46,6 +46,8 @@ document.getElementById("login-form").addEventListener("submit", e => {
                     sessionStorage.setItem("cliente", usuario);
                     window.location.href = "dashboardClientes.html";
                 }
+            } else {
+                normalAlert("Datos incorrectos", "El nombre de usuario o la contraseña son incorrectos", "error");
             }
         } else {
             normalAlert("Datos incorrectos", "El nombre de usuario o la contraseña son incorrectos", "error");

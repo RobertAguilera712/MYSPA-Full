@@ -1,6 +1,7 @@
 package edu.utl.dsm.myspa.rest;
 
 import com.google.gson.Gson;
+import edu.utl.dsm.myspa.controller.ControllerEmpleado;
 import edu.utl.dsm.myspa.controller.ControllerSucursal;
 import edu.utl.dsm.myspa.model.Sucursal;
 import java.util.ArrayList;
@@ -15,6 +16,29 @@ import javax.ws.rs.core.Response;
 
 @Path("branch")
 public class SucursalRest extends Application {
+
+	@Path("getAll")	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAll(@QueryParam("estatus") String estatus, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
+		String out = "";
+		try {
+			if (ce.validateToken(t)) {
+				ControllerSucursal objcs = new ControllerSucursal();
+				List<Sucursal> sucursales = new ArrayList<Sucursal>();
+				sucursales = objcs.getAll(Integer.parseInt(estatus));
+				Gson objGS = new Gson();
+				out = objGS.toJson(sucursales);
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			out = "{\"error\":\"Se produjo un error al cargar el catalogo de Sucursales, vuelva a intentarl}";
+		}
+		return Response.status(Response.Status.OK).entity(out).build();
+}
 
 	@Path("insert")
 	@GET
@@ -62,7 +86,7 @@ public class SucursalRest extends Application {
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
 
-	@Path("getAll")
+	/*@Path("getAll")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAll(@QueryParam("e") String estatus) {
@@ -78,7 +102,7 @@ public class SucursalRest extends Application {
 			out = String.format("{\"error\":\"Se produjo un error al cargar el catalogo, vuelva a intentarlo %s\"}", ex.toString());
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
-	}
+	}*/
 
 	@Path("update")
 	@GET

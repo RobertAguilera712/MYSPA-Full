@@ -1,5 +1,8 @@
 package edu.utl.dsm.myspa.model;
 
+import java.util.Date;
+import org.apache.commons.codec.digest.DigestUtils;
+
 public class Usuario {
     private int id;
     private String nombreUsu, contrasenia, rol, token;
@@ -54,12 +57,15 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public String getToken() {
+	public String getToken() {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setToken() {
+        String u = this.nombreUsu;
+        String k = new Date().toString();
+        String t = DigestUtils.sha256Hex(u+";"+k);
+        this.token = t;
     }
 
     @Override

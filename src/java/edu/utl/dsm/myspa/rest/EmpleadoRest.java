@@ -3,6 +3,7 @@ package edu.utl.dsm.myspa.rest;
 import com.google.gson.Gson;
 import edu.utl.dsm.myspa.controller.ControllerEmpleado;
 import edu.utl.dsm.myspa.model.Empleado;
+import edu.utl.dsm.myspa.model.Usuario;
 import java.util.List;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
@@ -133,5 +134,22 @@ public class EmpleadoRest extends Application {
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
-}
 
+	@Path("out")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response out(@FormParam("idu") @DefaultValue("0") String idu) {
+		String out;
+		try {
+			Usuario obju = new Usuario();
+			obju.setId(Integer.parseInt(idu));
+			ControllerEmpleado objCL = new ControllerEmpleado();
+			objCL.deleteToken(obju);
+			out = "{\"result\":\"Ok\"}";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			out = "{\"error\":\"Se generó un error en el cierre de sesión\"}";
+		}
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
+}
