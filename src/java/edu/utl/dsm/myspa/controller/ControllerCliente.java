@@ -306,6 +306,7 @@ public class ControllerCliente {
 		u.setId(rs.getInt("idUsuario"));
 		u.setNombreUsu(rs.getString("nombreUsuario"));
 		u.setRol(rs.getString("rol"));
+                u.setToken();
 
 		//Establecemos sus datos personales:
 		c.setId(rs.getInt("idCliente"));
@@ -324,7 +325,7 @@ public class ControllerCliente {
 
 	public Cliente login(String nombreU, String contra) throws Exception {
 		//Definir la consulta que se va a ejecutar
-		String query = "SELECT * FROM v_clientes WHERE nombreUsuario=? AND contrasenia=? AND estatus=1;";
+		String query = "SELECT * FROM v_clientes WHERE nombreUsuario=? AND contrasenia=? " + " AND estatus=1 AND (token IS NULL OR token = '');";
 		//Generar el objeto de la conexion
 		ConexionMySQL connMySQL = new ConexionMySQL();
 		//Abrir Conexión
@@ -339,7 +340,8 @@ public class ControllerCliente {
 		//objeto de tipo cliente
 		Cliente c = null;
 		if (rs.next()) {
-			c = fill(rs);
+                    c = fill(rs);
+                    saveToken(c.getUsuario());    
 		}
 		//cerrar los objetos de uso para la BD
 		rs.close();
@@ -347,5 +349,52 @@ public class ControllerCliente {
 		connMySQL.close();
 		//devuelve el objeto de tipo cliente
 		return c;
+	}
+        
+        public void saveToken(Usuario u) throws Exception {
+		//consulta
+		String query = "UPDATE usuario SET token ='" + u.getToken() + "' WHERE idUsuario=" + u.getId() + ";";
+		//generar el objeto de la conexion
+		ConexionMySQL connMySQL = new ConexionMySQL();
+		//Abrir conexion
+		Connection conn = connMySQL.open();
+		//oobjeto para ejecutar la consulta
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		pstmt.execute();
+		pstmt.close();
+		conn.close();
+		connMySQL.close();
+	}
+
+	public void deleteToken(Usuario u) throws Exception {
+		String query = "UPDATE usuario SET token=NULL WHERE idUsuario=" + u.getId() + ";";
+		ConexionMySQL connMySQL = new ConexionMySQL();
+		Connection conn = connMySQL.open();
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		pstmt.execute();
+		pstmt.close();
+		conn.close();
+		connMySQL.close();
+	}
+
+	public boolean validateToken(String token) throws Exception {
+		boolean valid = false;
+		//Generamos la consulta
+		String query = "SELECT * FROM v_clientes WHERE token='" + token + "';";
+		//Generar el objeto de la conexion
+		ConexionMySQL connMySQL = new ConexionMySQL();
+		//Abrir la conexion
+		Connection conn = connMySQL.open();
+		//Objeto para ejecutar la consulta
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+                    valid = true;
+		}
+		pstmt.close();
+		conn.close();
+		connMySQL.close();
+
+		return valid;
 	}
 }

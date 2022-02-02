@@ -3,6 +3,7 @@ package edu.utl.dsm.myspa.rest;
 import com.google.gson.Gson;
 import edu.utl.dsm.myspa.controller.ControllerCliente;
 import edu.utl.dsm.myspa.model.Cliente;
+import edu.utl.dsm.myspa.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.DefaultValue;
@@ -126,6 +127,24 @@ public class ClienteREST extends Application {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			out = "{\"error\":\"Hubo un fallo en el acceso, verifica la información. \"}";
+		}
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
+        
+        @Path("out")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response out(@FormParam("idu") @DefaultValue("0") String idu) {
+		String out;
+		try {
+			Usuario obju = new Usuario();
+			obju.setId(Integer.parseInt(idu));
+			ControllerCliente objCL = new ControllerCliente();
+			objCL.deleteToken(obju);
+			out = "{\"result\":\"Ok\"}";
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			out = "{\"error\":\"Se generó un error en el cierre de sesión\"}";
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
