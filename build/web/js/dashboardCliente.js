@@ -38,7 +38,13 @@ function modifyInformation(e) {
 }
 
 function cerrarSesion() {
-    sessionStorage.clear();
-    window.location.href = "login.html";
-
+    const idUser = cliente.usuario.id
+    console.log(idUser);
+    const url = "api/cliente/out";
+    const body = `idu=${idUser}`;
+    makeJSONRequestPOST(url, body).then(response =>{
+        console.log(response)
+        sessionStorage.clear();
+        window.location.href = "login.html";
+    });
 }
