@@ -43,7 +43,7 @@ public class ClienteREST extends Application {
     @Path("insert")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(@FormParam("new") @DefaultValue("") String cliente, @QueryParam("t") String t) {
+    public Response insert(@FormParam("new") @DefaultValue("") String cliente, @FormParam("t") String t) {
         String out = "";
         ControllerCliente objCE = new ControllerCliente();
         ControllerEmpleado ce = new ControllerEmpleado();
@@ -67,11 +67,12 @@ public class ClienteREST extends Application {
     @Path("update")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@FormParam("new") @DefaultValue("") String cliente, @QueryParam("t") String t) {
+    public Response update(@FormParam("new") @DefaultValue("") String cliente, @FormParam("t") String t) {
         String out = "";
         ControllerEmpleado ce = new ControllerEmpleado();
+        ControllerCliente cc = new ControllerCliente();
         try {
-            if (ce.validateToken(t)) {
+            if (ce.validateToken(t) || cc.validateToken(t)) {
                 Gson objGS = new Gson();
                 Cliente objC = objGS.fromJson(cliente, Cliente.class);
                 ControllerCliente objCE = new ControllerCliente();
