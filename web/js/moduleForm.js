@@ -65,7 +65,7 @@ function saveGet(register, moduleName) {
 
 function savePOST(register, moduleName) {
     let url = `api/${moduleName}/`;
-    const body = `new=${encodeURIComponent(JSON.stringify(register))}`
+    const body = `new=${encodeURIComponent(JSON.stringify(register))}`;
     if (!register.hasOwnProperty("id")) {
         url += "insert";
         alertaGuardarNuevo(() => {

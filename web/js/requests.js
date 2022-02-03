@@ -27,6 +27,7 @@ async function makeJSONRequestPOST(url, body) {
         body += `&t=${token}`
         console.log(body)
     }
+    console.log(body);
     try {
         const response = await fetch((url), {
             method: "POST",
