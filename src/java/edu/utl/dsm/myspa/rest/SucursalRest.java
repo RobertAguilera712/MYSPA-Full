@@ -20,7 +20,7 @@ public class SucursalRest extends Application {
 	@Path("getAll")	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAll(@QueryParam("estatus") String estatus, @QueryParam("t") String t) {
+	public Response getAll(@QueryParam("e") String estatus, @QueryParam("t") String t) {
 		ControllerEmpleado ce = new ControllerEmpleado();
 		String out = "";
 		try {
@@ -35,7 +35,7 @@ public class SucursalRest extends Application {
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			out = "{\"error\":\"Se produjo un error al cargar el catalogo de Sucursales, vuelva a intentarl}";
+			out = String.format("{\"error\":\"Se produjo un error al cargar el catalogo de Sucursales, vuelva a intentarl %s\"}", ex.toString());
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
 }

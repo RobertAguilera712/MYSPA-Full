@@ -7,12 +7,26 @@ async function makeHTMLRequest(url) {
 }
 
 async function makeJSONRequestGET(url) {
+    const empleado = JSON.parse(sessionStorage.getItem("empleado"));
+    const token = empleado.usuario.token
+    console.log(token);
+    console.log(url);
+    url += `&t=${token}`;
+    console.log(url);
     const response = await fetch((url));
     const jsonData = await response.json();
     return jsonData;
 }
 
 async function makeJSONRequestPOST(url, body) {
+    if (!url.endsWith("login")) {
+        const empleado = JSON.parse(sessionStorage.getItem("empleado"));
+        const token = empleado.usuario.token
+        console.log(token);
+        console.log(body);
+        body += `&t=${token}`
+        console.log(body)
+    }
     try {
         const response = await fetch((url), {
             method: "POST",
@@ -22,6 +36,7 @@ async function makeJSONRequestPOST(url, body) {
             body: body
         });
         const json = await response.json();
+        console.log(json);
         return json;
     } catch (error) {
         return "Error de conexión";
