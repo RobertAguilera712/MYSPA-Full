@@ -1,8 +1,7 @@
-
 package edu.utl.dsm.myspa.rest;
 
-
 import com.google.gson.Gson;
+import edu.utl.dsm.myspa.controller.ControllerEmpleado;
 import edu.utl.dsm.myspa.controller.ControllerSala;
 import edu.utl.dsm.myspa.model.Sala;
 import java.util.ArrayList;
@@ -20,22 +19,24 @@ import javax.ws.rs.core.Response;
 
 @Path("room")
 public class SalaRest extends Application {
-    @Path("insert")
+
+	@Path("insert")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response insert(@FormParam("new") @DefaultValue("") String s) {
-
+	public Response insert(@FormParam("new") @DefaultValue("") String s, @FormParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
 		String out;
 		Gson gson = new Gson();
 		Sala sala = gson.fromJson(s, Sala.class);
 
 		try {
-
-			ControllerSala controllerSala = new ControllerSala();
-
-			int id = controllerSala.insert(sala);
-
-			out = String.format("{\"idGenerado\": \"%d\"}", id);
+			if (ce.validateToken(t)) {
+				ControllerSala controllerSala = new ControllerSala();
+				int id = controllerSala.insert(sala);
+				out = String.format("{\"idGenerado\": \"%d\"}", id);
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -48,15 +49,19 @@ public class SalaRest extends Application {
 	@Path("delete")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response delete(@QueryParam("id") String id) {
+	public Response delete(@QueryParam("id") String id, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
 		String out;
 
 		try {
-			ControllerSala controllerSala = new ControllerSala();
-			controllerSala.delete(Integer.parseInt(id));
+			if (ce.validateToken(t)) {
+				ControllerSala controllerSala = new ControllerSala();
+				controllerSala.delete(Integer.parseInt(id));
 
-			out = "{\"result\": \"Eliminación exitosa\"}";
-
+				out = "{\"result\": \"Eliminación exitosa\"}";
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -69,14 +74,19 @@ public class SalaRest extends Application {
 	@Path("getAll")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAll(@QueryParam("e") String estatus) {
+	public Response getAll(@QueryParam("e") String estatus, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
 		String out = "";
 		try {
-			ControllerSala objCS = new ControllerSala();
-			List<Sala> sala = new ArrayList<Sala>();
-			sala = objCS.getAll(Integer.parseInt(estatus));
-			Gson objGS = new Gson();
-			out = objGS.toJson(sala);
+			if (ce.validateToken(t)) {
+				ControllerSala objCS = new ControllerSala();
+				List<Sala> sala = new ArrayList<Sala>();
+				sala = objCS.getAll(Integer.parseInt(estatus));
+				Gson objGS = new Gson();
+				out = objGS.toJson(sala);
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			out = String.format("{\"error\":\"Se produjo un error al cargar el catalogo, vuelva a intentarlo %s\"}", ex.toString());
@@ -87,19 +97,22 @@ public class SalaRest extends Application {
 	@Path("update")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update(@FormParam("new") @DefaultValue("") String s) {
+	public Response update(@FormParam("new") @DefaultValue("") String s, @FormParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
 		String out;
 
 		Gson gson = new Gson();
 		Sala sala = gson.fromJson(s, Sala.class);
 
 		try {
+			if (ce.validateToken(t)) {
+				ControllerSala cs = new ControllerSala();
+				cs.update(sala);
 
-			ControllerSala cs = new ControllerSala();
-			cs.update(sala);
-
-			out = "{\"result\": \"Modificación exitosa\"}";
-
+				out = "{\"result\": \"Modificación exitosa\"}";
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -112,15 +125,18 @@ public class SalaRest extends Application {
 	@Path("search")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status) {
+	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
 		String out;
 		Gson gson = new Gson();
 
 		try {
-
-			ControllerSala cs = new ControllerSala();
-			out = gson.toJson(cs.search(filter, Integer.valueOf(status)));
-
+			if (ce.validateToken(t)) {
+				ControllerSala cs = new ControllerSala();
+				out = gson.toJson(cs.search(filter, Integer.valueOf(status)));
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -131,5 +147,3 @@ public class SalaRest extends Application {
 	}
 
 }
-
-

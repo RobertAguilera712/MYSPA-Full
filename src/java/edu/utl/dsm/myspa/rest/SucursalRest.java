@@ -17,12 +17,12 @@ import javax.ws.rs.core.Response;
 @Path("branch")
 public class SucursalRest extends Application {
 
-	@Path("getAll")	
+	@Path("getAll")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAll(@QueryParam("e") String estatus, @QueryParam("t") String t) {
 		ControllerEmpleado ce = new ControllerEmpleado();
-		String out = "";
+		String out;
 		try {
 			if (ce.validateToken(t)) {
 				ControllerSucursal objcs = new ControllerSucursal();
@@ -38,24 +38,28 @@ public class SucursalRest extends Application {
 			out = String.format("{\"error\":\"Se produjo un error al cargar el catalogo de Sucursales, vuelva a intentarl %s\"}", ex.toString());
 		}
 		return Response.status(Response.Status.OK).entity(out).build();
-}
+	}
 
 	@Path("insert")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response insert(@QueryParam("new") String s) {
+	public Response insert(@QueryParam("new") String s, @QueryParam("t") String t) {
 
 		String out;
 		Gson gson = new Gson();
 		Sucursal sucursal = gson.fromJson(s, Sucursal.class);
-
+		ControllerEmpleado ce = new ControllerEmpleado();
 		try {
 
-			ControllerSucursal controllerSucursal = new ControllerSucursal();
+			if (ce.validateToken(t)) {
+				ControllerSucursal controllerSucursal = new ControllerSucursal();
 
-			int id = controllerSucursal.insert(sucursal);
+				int id = controllerSucursal.insert(sucursal);
 
-			out = String.format("{\"idGenerado\": \"%d\"}", id);
+				out = String.format("{\"idGenerado\": \"%d\"}", id);
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -68,15 +72,17 @@ public class SucursalRest extends Application {
 	@Path("delete")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response delete(@QueryParam("id") String id) {
+	public Response delete(@QueryParam("id") String id, @QueryParam("t") String t) {
 		String out;
-
+		ControllerEmpleado ce = new ControllerEmpleado();
 		try {
-			ControllerSucursal controllerSucursal = new ControllerSucursal();
-			controllerSucursal.delete(Integer.parseInt(id));
-
-			out = "{\"result\": \"Eliminación exitosa\"}";
-
+			if (ce.validateToken(t)) {
+				ControllerSucursal controllerSucursal = new ControllerSucursal();
+				controllerSucursal.delete(Integer.parseInt(id));
+				out = "{\"result\": \"Eliminación exitosa\"}";
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 
@@ -86,39 +92,26 @@ public class SucursalRest extends Application {
 		return Response.status(Response.Status.OK).entity(out).build();
 	}
 
-	/*@Path("getAll")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getAll(@QueryParam("e") String estatus) {
-		String out = "";
-		try {
-			ControllerSucursal objCS = new ControllerSucursal();
-			List<Sucursal> sucursales = new ArrayList<Sucursal>();
-			sucursales = objCS.getAll(Integer.parseInt(estatus));
-			Gson objGS = new Gson();
-			out = objGS.toJson(sucursales);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			out = String.format("{\"error\":\"Se produjo un error al cargar el catalogo, vuelva a intentarlo %s\"}", ex.toString());
-		}
-		return Response.status(Response.Status.OK).entity(out).build();
-	}*/
-
 	@Path("update")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update(@QueryParam("new") String s) {
+	public Response update(@QueryParam("new") String s, @QueryParam("t") String t) {
 		String out;
 
 		Gson gson = new Gson();
 		Sucursal sucursal = gson.fromJson(s, Sucursal.class);
+		ControllerEmpleado ce = new ControllerEmpleado();
 
 		try {
 
-			ControllerSucursal cs = new ControllerSucursal();
-			cs.update(sucursal);
+			if (ce.validateToken(t)) {
+				ControllerSucursal cs = new ControllerSucursal();
+				cs.update(sucursal);
 
-			out = "{\"result\": \"Modificación exitosa\"}";
+				out = "{\"result\": \"Modificación exitosa\"}";
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -132,14 +125,19 @@ public class SucursalRest extends Application {
 	@Path("search")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status) {
+	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String status, @QueryParam("t") String t) {
 		String out;
 		Gson gson = new Gson();
+		ControllerEmpleado ce = new ControllerEmpleado();
 
 		try {
 
-			ControllerSucursal cs = new ControllerSucursal();
-			out = gson.toJson(cs.search(filter, Integer.valueOf(status)));
+			if (ce.validateToken(t)) {
+				ControllerSucursal cs = new ControllerSucursal();
+				out = gson.toJson(cs.search(filter, Integer.valueOf(status)));
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

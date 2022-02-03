@@ -1,5 +1,6 @@
 package edu.utl.dsm.myspa.rest;
 
+import edu.utl.dsm.myspa.controller.ControllerEmpleado;
 import edu.utl.dsm.myspa.controller.ControllerProducto;
 import edu.utl.dsm.myspa.model.Producto;
 
@@ -15,80 +16,111 @@ public class ProductoRest {
 
 	private final static ControllerProducto CP = new ControllerProducto();
 
-    @Path("insert")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(@QueryParam("new") String p) {
-        String out;
-        Producto producto = Utils.GSON.fromJson(p, Producto.class);
+	@Path("insert")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response insert(@QueryParam("new") String p, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
 
-        try {
-            int id = CP.insert(producto);
-            out = String.format(Utils.JSON, "idGenerado", String.valueOf(id));
-        } catch (Exception e) {
-            out = String.format(Utils.ERROR, "la inserción", e.toString());
-        }
+		String out;
+		Producto producto = Utils.GSON.fromJson(p, Producto.class);
 
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
-
-    @Path("delete")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@QueryParam("id") String id) {
-        String out;
-
-        try {
-            CP.delete(Integer.parseInt(id));
-
-            out = String.format(Utils.JSON, "result", "Eliminación exitosa") ;
-        } catch (Exception e) {
-            out = String.format(Utils.ERROR,  "la eliminación", e.toString());
-        }
-
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
-
-    @Path("getAll")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll(@QueryParam("e") String e) {
-        String out;
-
-        try {
-            out = Utils.GSON.toJson(CP.getAll(Integer.parseInt(e)));
-        } catch (Exception ex) {
-            out = String.format(Utils.ERROR, "", ex.toString());
-        }
-
-        return Response.status(Response.Status.OK).entity(out).build();
-    }
-
-    @Path("update")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@QueryParam("new") String p){
-        String out;
-		try{
-			CP.update(Utils.GSON.fromJson(p, Producto.class));
-            out = String.format(Utils.JSON, "result", "Modificación exitosa");
-		}catch(Exception e){
-			out = String.format(Utils.ERROR, "la modificación",  e.toString());
+		try {
+			if (ce.validateToken(t)) {
+				int id = CP.insert(producto);
+				out = String.format(Utils.JSON, "idGenerado", String.valueOf(id));
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
+		} catch (Exception e) {
+			out = String.format(Utils.ERROR, "la inserción", e.toString());
 		}
-		
+
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
+
+	@Path("delete")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response delete(@QueryParam("id") String id, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
+
+		String out;
+
+		try {
+			if (ce.validateToken(t)) {
+				CP.delete(Integer.parseInt(id));
+
+				out = String.format(Utils.JSON, "result", "Eliminación exitosa");
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
+		} catch (Exception e) {
+			out = String.format(Utils.ERROR, "la eliminación", e.toString());
+		}
+
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
+
+	@Path("getAll")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAll(@QueryParam("e") String e, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
+
+		String out;
+
+		try {
+			if (ce.validateToken(t)) {
+				out = Utils.GSON.toJson(CP.getAll(Integer.parseInt(e)));
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
+
+		} catch (Exception ex) {
+			out = String.format(Utils.ERROR, "", ex.toString());
+		}
+
+		return Response.status(Response.Status.OK).entity(out).build();
+	}
+
+	@Path("update")
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response update(@QueryParam("new") String p, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
+
+		String out;
+		try {
+			if (ce.validateToken(t)) {
+				CP.update(Utils.GSON.fromJson(p, Producto.class));
+				out = String.format(Utils.JSON, "result", "Modificación exitosa");
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
+		} catch (Exception e) {
+			out = String.format(Utils.ERROR, "la modificación", e.toString());
+		}
+
 		System.out.println(out);
 
 		return Response.status(Response.Status.OK).entity(out).build();
-    }
+	}
 
 	@Path("search")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String e){
-		String out;		
-		try{
-			out = Utils.GSON.toJson(CP.search(filter, Integer.parseInt(e)));
-		}catch(Exception ex){
+	public Response search(@QueryParam("filter") String filter, @QueryParam("e") String e, @QueryParam("t") String t) {
+		ControllerEmpleado ce = new ControllerEmpleado();
+
+		String out;
+		try {
+			if (ce.validateToken(t)) {
+				out = Utils.GSON.toJson(CP.search(filter, Integer.parseInt(e)));
+			} else {
+				out = "{\"error\":\"Acceso denegado al API\"}";
+			}
+		} catch (Exception ex) {
 			out = String.format(Utils.ERROR, "la busqueda", ex.toString());
 		}
 
