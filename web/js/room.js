@@ -22,8 +22,8 @@ function saveRoom(e) {
 
 function getRoomFromForm() {
     const id = document.getElementById("txtId").value;
-    const name = document.getElementById("txtName").value;
-    const description = document.getElementById("txtDescription").value;
+    const name = sanitizar(normalizar(document.getElementById("txtName").value));
+    const description = sanitizar(normalizar(document.getElementById("txtDescription").value));
     const photo = document.getElementById("selectedImg").src.replace(/data:image\/.*;base64,/, "");
     const branch = document.getElementById("txtBranch").value;
 
