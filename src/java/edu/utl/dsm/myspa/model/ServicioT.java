@@ -4,49 +4,34 @@ import java.util.List;
 
 public class ServicioT {
     private int id;
-    private List<Tratamiento> tratamiento;
-    private Servicio servicio;
+    private Tratamiento tratamiento;
+    private List<Producto> productos;
 
-    public ServicioT() {
-    }
+	public ServicioT() {
+	}
 
-    public ServicioT(int id, List<Tratamiento> tratamiento, Servicio servicio) {
-        this.id = id;
-        this.tratamiento = tratamiento;
-        this.servicio = servicio;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public ServicioT(List<Tratamiento> tratamiento, Servicio servicio) {
-        this.tratamiento = tratamiento;
-        this.servicio = servicio;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public Servicio getServicio() {
-        return servicio;
-    }
+	public Tratamiento getTratamiento() {
+		return tratamiento;
+	}
 
-    public void setServicio(Servicio servicio) {
-        this.servicio = servicio;
-    }
+	public void setTratamiento(Tratamiento tratamiento) {
+		this.tratamiento = tratamiento;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public List<Producto> getProductos() {
+		return productos;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
 
-    public List<Tratamiento> getTratamiento() {
-        return tratamiento;
-    }
-
-    public void setTratamiento(List<Tratamiento> tratamiento) {
-        this.tratamiento = tratamiento;
-    }
-
-    @Override
-    public String toString() {
-        return "ServicioT{" + "id=" + id + ", tratamiento=" + tratamiento + ", servicio=" + servicio + '}';
-    }
 }

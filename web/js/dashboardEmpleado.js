@@ -1,8 +1,8 @@
 let empleado;
 
 async function loadDashboard() {
-    if (sessionStorage.getItem("empleado")) {
-        empleado = JSON.parse(sessionStorage.getItem("empleado"));
+    if (sessionStorage.getItem("usuario")) {
+        empleado = JSON.parse(sessionStorage.getItem("usuario"));
         await loadHTML("modules/mainDashboard.html")
         document.getElementById("nombrePersona").textContent = empleado.persona.nombre;
         if (empleado.foto.length > 0) {

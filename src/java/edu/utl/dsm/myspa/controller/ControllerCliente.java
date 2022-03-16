@@ -281,7 +281,7 @@ public class ControllerCliente {
 		return clientes;
 	}
 
-	private Cliente fill(ResultSet rs) throws Exception {
+	static Cliente fill(ResultSet rs) throws Exception {
 		//Una variable temporal para crear nuevos objetos de tipo Cliente:
 		Cliente c = new Cliente();
 
@@ -294,6 +294,7 @@ public class ControllerCliente {
 		//Llenamos sus datos:
 		p.setApellidoM(rs.getString("apellidoMaterno"));
 		p.setApellidoP(rs.getString("apellidoPaterno"));
+		p.setNombreCompleto(rs.getString("nombreCompleto"));
 		p.setDomicilio(rs.getString("domicilio"));
 		p.setGenero(rs.getString("genero"));
 		p.setId(rs.getInt("idPersona"));

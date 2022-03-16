@@ -10,8 +10,21 @@ function refreshRoomTable() {
     refreshTable("room");
 }
 
-function loadRoomForm() {
-    loadModuleForm("room");
+async function loadRoomForm() {
+    await loadModuleForm("room");
+    await loadBranchesRoom();
+}
+
+async function loadBranchesRoom() {
+    const branches = await getRegisters('branch')
+    let html
+    for (const branch of branches) {
+        if (branch) {
+            const option = `<option value="${branch.id}">${branch.nombre}</option>`
+            html += option
+        }
+    }
+    document.getElementById('txtBranch').innerHTML = html
 }
 
 function saveRoom(e) {

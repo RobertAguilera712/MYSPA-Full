@@ -117,15 +117,17 @@ CREATE TABLE sala_horario
 CREATE TABLE reservacion
 (
     idReservacion   INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fechaHoraInicio DATETIME,
-    fechaHoraFin    DATETIME,
+    fecha Date,
+    idHorario INT NOT NULL,
     estatus         INT,
     idCliente       INT NOT NULL,
     idSala          INT NOT NULL,
     CONSTRAINT  fk_reservacion_cliente   FOREIGN KEY (idCliente)
                 REFERENCES cliente(idCliente) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT  fk_reservacion_sala      FOREIGN KEY (idSala) 
-                REFERENCES sala(idSala) ON DELETE CASCADE ON UPDATE CASCADE    
+                REFERENCES sala(idSala) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT  fk_reservacion_horario   FOREIGN KEY (idHorario)
+                REFERENCES horario(idHorario) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE servicio

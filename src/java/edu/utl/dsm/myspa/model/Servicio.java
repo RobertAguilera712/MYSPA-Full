@@ -1,61 +1,64 @@
 package edu.utl.dsm.myspa.model;
 
+import java.util.List;
+
 public class Servicio {
     private int id;
     private String fecha;
     private Empleado empleado;
     private Reservacion reservacion;
+	private List<ServicioT> ServiciosT;
+	private float total;
 
-    public Servicio() {
-    }
+	public Servicio() {
+	}
 
-    public Servicio(int id, String fecha, Empleado empleado, Reservacion reservacion) {
-        this.id = id;
-        this.fecha = fecha;
-        this.empleado = empleado;
-        this.reservacion = reservacion;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public Servicio(String fecha, Empleado empleado, Reservacion reservacion) {
-        this.fecha = fecha;
-        this.empleado = empleado;
-        this.reservacion = reservacion;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public Reservacion getReservacion() {
-        return reservacion;
-    }
+	public String getFecha() {
+		return fecha;
+	}
 
-    public void setReservacion(Reservacion reservacion) {
-        this.reservacion = reservacion;
-    }
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public Empleado getEmpleado() {
+		return empleado;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
 
-    public String getFecha() {
-        return fecha;
-    }
+	public Reservacion getReservacion() {
+		return reservacion;
+	}
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
+	public void setReservacion(Reservacion reservacion) {
+		this.reservacion = reservacion;
+	}
 
-    public Empleado getEmpleado() {
-        return empleado;
-    }
+	public List<ServicioT> getServiciosT() {
+		return ServiciosT;
+	}
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
+	public void setServiciosT(List<ServicioT> ServiciosT) {
+		this.ServiciosT = ServiciosT;
+	}
 
-    @Override
-    public String toString() {
-        return "Servicio{" + "id=" + id + ", fecha=" + fecha + ", empleado=" + empleado.toString() + ", reservacion=" + reservacion.toString() + '}';
-    }
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
+	
 }

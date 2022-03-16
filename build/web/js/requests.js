@@ -7,8 +7,8 @@ async function makeHTMLRequest(url) {
 }
 
 async function makeJSONRequestGET(url) {
-    const empleado = JSON.parse(sessionStorage.getItem("empleado"));
-    const token = empleado.usuario.token
+    const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+    const token = usuario.usuario.token
     console.log(token);
     console.log(url);
     url += `&t=${token}`;
@@ -20,8 +20,8 @@ async function makeJSONRequestGET(url) {
 
 async function makeJSONRequestPOST(url, body) {
     if (!url.endsWith("login")) {
-        const empleado = JSON.parse(sessionStorage.getItem("empleado"));
-        const token = empleado.usuario.token
+        const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+        const token = usuario.usuario.token
         console.log(token);
         console.log(body);
         body += `&t=${token}`

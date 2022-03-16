@@ -6,6 +6,7 @@ public class Reservacion {
     private int estatus;
     private Sala sala;
     private Cliente cliente;
+    private Horario horario;
 
     public Reservacion() {
     }
@@ -69,4 +70,13 @@ public class Reservacion {
     public String toString() {
         return "Reservacion{" + "id=" + id + ", fecha=" + fecha + ", estatus=" + estatus + ", sala=" + sala.toString() + ", cliente=" + cliente.toString() + '}';
     }
+
+	public Horario getHorario() {
+		return horario;
+	}
+
+	public void setHorario(Horario horario) {
+		this.horario = horario;
+	}
+	
 }

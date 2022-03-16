@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kasparov/programming/web/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/SucursalRest.java</file>
-            <file>file:/home/kasparov/programming/web/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/ProductoRest.java</file>
-            <file>file:/home/kasparov/programming/web/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/SalaRest.java</file>
+            <file>file:/home/kasparov/Desktop/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerServicio.java</file>
+            <file>file:/home/kasparov/Desktop/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Reservacion.java</file>
+            <file>file:/home/kasparov/Desktop/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerReservacion.java</file>
         </group>
     </open-files>
 </project-private>

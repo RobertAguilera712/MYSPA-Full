@@ -374,6 +374,7 @@ public class ControllerEmpleado {
 		//Llenamos sus datos:
 		p.setApellidoM(rs.getString("apellidoMaterno"));
 		p.setApellidoP(rs.getString("apellidoPaterno"));
+		p.setNombreCompleto(rs.getString("nombreCompleto"));
 		p.setDomicilio(rs.getString("domicilio"));
 		p.setGenero(rs.getString("genero"));
 		p.setId(rs.getInt("idPersona"));

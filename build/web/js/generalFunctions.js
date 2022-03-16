@@ -1,3 +1,38 @@
+function normalizar(texto) {
+
+	texto = texto.replaceAll("Á", "A");
+	texto = texto.replaceAll("É", "E");
+	texto = texto.replaceAll("Í", "I");
+	texto = texto.replaceAll("Ó", "O");
+	texto = texto.replaceAll("Ú", "U");
+
+	texto = texto.replaceAll("á", "a");
+	texto = texto.replaceAll("é", "e");
+	texto = texto.replaceAll("í", "i");
+	texto = texto.replaceAll("ó", "o");
+	texto = texto.replaceAll("ú", "u");
+	return texto;
+}
+
+function sanitizar(texto) {
+	texto = texto.replaceAll("(", "");
+	texto = texto.replaceAll(")", "");
+	texto = texto.replaceAll("/", "");
+	
+
+	texto = texto.replaceAll("\\", "");
+	texto = texto.replaceAll("'", "");
+	texto = texto.replaceAll(",", "");
+	texto = texto.replaceAll("\"", "");
+
+	texto = texto.replaceAll("“", "");
+	texto = texto.replaceAll("”", "");
+	texto = texto.replaceAll("-", "");
+	texto = texto.replaceAll(";", "");
+	texto = texto.replaceAll(".", "");
+
+	return texto;
+}
 async function loadHTML(url) {
 	const doc = await makeHTMLRequest(url);
 	document.getElementById("content").innerHTML = doc.body.innerHTML;
@@ -19,6 +54,7 @@ function makeBtn(className, text) {
 	const btn = document.createElement("button");
 	btn.className = className;
 	btn.textContent = text;
+	btn.type = 'button'
 
 	return btn;
 }

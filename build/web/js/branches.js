@@ -22,8 +22,8 @@ function saveBranch(e) {
 
 function getBranchFromForm() {
     const id = document.getElementById("txtId").value;
-    const name = document.getElementById("txtName").value;
-    const address = document.getElementById("txtAddress").value;
+    const name = sanitizar(normalizar(document.getElementById("txtName").value));
+    const address = sanitizar(normalizar(document.getElementById("txtAddress").value));
     const latitude = document.getElementById("txtLatitude").value;
     const longitude = document.getElementById("txtLongitude").value;
 

@@ -66,7 +66,7 @@ public class EmpleadoRest extends Application {
     @Path("insert")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(@FormParam("new") @DefaultValue("") String empleado, @FormParam("t") String t) {
+    public Response insert(@FormParam("new") @DefaultValue("") String empleado, @QueryParam("t") String t) {
         String out = "";
         ControllerEmpleado objCE = new ControllerEmpleado();
         try {
@@ -89,7 +89,7 @@ public class EmpleadoRest extends Application {
     @Path("update")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@FormParam("new") @DefaultValue("") String empleado, @FormParam("t") String t) {
+    public Response update(@FormParam("new") @DefaultValue("") String empleado, @QueryParam("t") String t) {
         String out = "";
         ControllerEmpleado objCE = new ControllerEmpleado();
         try {

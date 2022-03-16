@@ -4,6 +4,7 @@ public class Persona {
     private int id;
     private String nombre, apellidoP, apellidoM, domicilio, telefono, rfc;
     private String genero;
+    private String nombreCompleto;
 
     public Persona() {
     }
@@ -93,6 +94,15 @@ public class Persona {
 		this.genero = genero;
 	}
 
+	public String getNombreCompleto() {
+		return nombreCompleto;
+	}
+
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	
 
     @Override
     public String toString() {

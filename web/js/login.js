@@ -40,10 +40,10 @@ document.getElementById("login-form").addEventListener("submit", e => {
             } else if (data.id) {
                 const usuario = JSON.stringify(data);
                 if (userType === "EMPLEADO") {
-                    sessionStorage.setItem("empleado", usuario);
+                    sessionStorage.setItem("usuario", usuario);
                     window.location.href = "dashboard.html";
                 } else {
-                    sessionStorage.setItem("cliente", usuario);
+                    sessionStorage.setItem("usuario", usuario);
                     window.location.href = "dashboardClientes.html";
                 }
             } else {

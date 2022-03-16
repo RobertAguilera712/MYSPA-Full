@@ -22,9 +22,9 @@ function saveProduct(e) {
 
 function getProductFromForm() {
     const id = document.getElementById("txtId").value;
-    const name = sanitizar(normalizar(document.getElementById("txtName").value));
-    const brand = sanitizar(normalizar(document.getElementById("txtBrand").value));
-    const price = sanitizar(normalizar(document.getElementById("txtPrice").value));
+    const name = document.getElementById("txtName").value;
+    const brand = document.getElementById("txtBrand").value;
+    const price = document.getElementById("txtPrice").value;
 
     const product = {
         "id": id,

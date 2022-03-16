@@ -10,8 +10,21 @@ function refreshRoomTable() {
     refreshTable("room");
 }
 
-function loadRoomForm() {
-    loadModuleForm("room");
+async function loadRoomForm() {
+    await loadModuleForm("room");
+    await loadBranchesRoom();
+}
+
+async function loadBranchesRoom() {
+    const branches = await getRegisters('branch')
+    let html
+    for (const branch of branches) {
+        if (branch) {
+            const option = `<option value="${branch.id}">${branch.nombre}</option>`
+            html += option
+        }
+    }
+    document.getElementById('txtBranch').innerHTML = html
 }
 
 function saveRoom(e) {
@@ -22,8 +35,8 @@ function saveRoom(e) {
 
 function getRoomFromForm() {
     const id = document.getElementById("txtId").value;
-    const name = sanitizar(normalizar(document.getElementById("txtName").value));
-    const description = sanitizar(normalizar(document.getElementById("txtDescription").value));
+    const name = document.getElementById("txtName").value;
+    const description = document.getElementById("txtDescription").value;
     const photo = document.getElementById("selectedImg").src.replace(/data:image\/.*;base64,/, "");
     const branch = document.getElementById("txtBranch").value;
 

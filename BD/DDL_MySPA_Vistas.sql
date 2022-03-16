@@ -20,6 +20,7 @@
 DROP VIEW IF EXISTS v_empleados;
 CREATE VIEW v_empleados AS
     SELECT  P.*,
+    		CONCAT(P.nombre, " ", P.apellidoPaterno, " ", P.apellidoMaterno) as nombreCompleto,
             E.idEmpleado,
             E.numeroEmpleado,
             E.puesto,
@@ -35,6 +36,7 @@ CREATE VIEW v_empleados AS
 DROP VIEW IF EXISTS v_clientes;
 CREATE VIEW v_clientes AS
     SELECT  P.*,
+     		CONCAT(P.nombre, " ", P.apellidoPaterno, " ", P.apellidoMaterno) as nombreCompleto,
             C.idCliente,
             C.correo,
             C.numeroUnico,
@@ -45,16 +47,21 @@ CREATE VIEW v_clientes AS
             INNER JOIN usuario U ON U.idUsuario = C.idUsuario;
 
 --  Vista que consulta todos los datos de una Reservacion:
+use myspa;
+
 DROP VIEW IF EXISTS v_reservacion;
 CREATE VIEW v_reservacion AS
     SELECT  P.*,
+            CONCAT(P.nombre, " ", P.apellidoPaterno, " ", P.apellidoMaterno) as nombreCompleto,
             C.idCliente,
             C.correo,
             C.numeroUnico,
             R.idReservacion,
-            DATE_FORMAT(R.fechaHoraInicio, '%d/%m/%Y %H:%i:%s') AS fechaHoraInicio,
-            DATE_FORMAT(R.fechaHoraFin, '%d/%m/%Y %H:%i:%s') AS fechaHoraFin,
             R.estatus,
+            date_format(R.fecha, '%Y/%m/%d') as fecha,
+            H.idHorario,
+            H.horaInicio,
+            H.horaFin,
             S.idSala,
             S.nombre AS nombreSala,
             S.descripcion,
@@ -64,7 +71,9 @@ CREATE VIEW v_reservacion AS
     FROM    persona P
             INNER JOIN cliente C ON C.idPersona = P.idPersona
             INNER JOIN reservacion R ON R.idCliente = C.idCliente
-            INNER JOIN sala S ON S.idSala = R.idSala;
+            INNER JOIN sala S ON S.idSala = R.idSala
+            INNER JOIN horario H ON R.idHorario = H.idHorario;
+
 
 --  Vista que consulta todas las sucursales y sus salas respectivas:
 DROP VIEW IF EXISTS v_sucursales_salas;
@@ -98,8 +107,10 @@ CREATE VIEW v_servicios AS
     SELECT  S.idServicio,
         S.fecha,
         R.idReservacion,
-        R.fechaHoraInicio,
-        R.fechaHoraFin,
+        R.fecha AS fechaReservacion,
+        H.idHorario,
+        H.horaInicio,
+        H.horaFin,
         C.idCliente,
         C.numeroUnico,
         PC.nombre AS nombreCliente,
@@ -121,6 +132,7 @@ CREATE VIEW v_servicios AS
                 INNER JOIN persona PC ON C.idPersona = PC.idPersona
                 INNER JOIN empleado E ON S.idEmpleado = E.idEmpleado
                 INNER JOIN persona PE ON PE.idPersona = E.idPersona
+                INNER JOIN horario H ON R.idHorario = H.idHorario
 /*                
                 INNER JOIN  (
                                 SELECT  STP.idServicioTratamiento,

@@ -1,8 +1,8 @@
 let cliente;
 
 async function loadDashboard() {
-    if (sessionStorage.getItem("cliente")) {
-        cliente = JSON.parse(sessionStorage.getItem("cliente"));
+    if (sessionStorage.getItem("usuario")) {
+        cliente = JSON.parse(sessionStorage.getItem("usuario"));
         await loadHTML("modules/mainDashboard.html")
         document.getElementById("nombrePersona").textContent = cliente.persona.nombre;
     } else {
@@ -38,7 +38,13 @@ function modifyInformation(e) {
 }
 
 function cerrarSesion() {
-    sessionStorage.clear();
-    window.location.href = "login.html";
-
+    const idUser = cliente.usuario.id
+    console.log(idUser);
+    const url = "api/cliente/out";
+    const body = `idu=${idUser}`;
+    makeJSONRequestPOST(url, body).then(response => {
+        console.log(response)
+        sessionStorage.clear();
+        window.location.href = "login.html";
+    });
 }

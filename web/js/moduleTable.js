@@ -4,7 +4,7 @@ async function loadModuleTable(moduleName) {
 	const url = `modules/${moduleName}Table.html`;
 	await loadHTML(url);
 	jsonArray = await getRegisters(moduleName);
-	populateTable();
+	populateTable(moduleName);
 	addActions(moduleName);
 }
 
@@ -15,18 +15,17 @@ async function getRegisters(moduleName) {
 	} catch (error) {
 	}
 	const url = `api/${moduleName}/getAll?e=${status}`;
-	console.log(url);
 	const registers = await makeJSONRequestGET(url);
 	return registers
 }
 
 async function refreshTable(moduleName) {
 	jsonArray = await getRegisters(moduleName);
-	populateTable();
+	populateTable(moduleName);
 	addActions(moduleName);
 }
 
-function populateTable() {
+function populateTable(moduleName) {
 	let tableBody = document.getElementById("tbody");
 	tableBody.innerHTML = "";
 	const keys = getKeys();
@@ -52,28 +51,53 @@ function populateTable() {
 
 		let actionsCell = row.insertCell();
 
-		let modifyBtn = makeBtn("btn btn-warning btn-sm m-1", "Modificar");
-		let deleteBtn = makeBtn("btn btn-danger btn-sm m-1", "Eliminar");
+		let modifyBtn;
+		let deleteBtn;
+		if (moduleName === 'reservation') {
+			modifyBtn = makeBtn("btn btn-primary btn-sm m-1", "Atender");
+			deleteBtn = makeBtn("btn btn-danger btn-sm m-1", "Cancelar");
+		} else {
+			modifyBtn = makeBtn("btn btn-warning btn-sm m-1", "Modificar");
+			deleteBtn = makeBtn("btn btn-danger btn-sm m-1", "Eliminar");
+		}
+
 
 		actionsCell.append(modifyBtn, deleteBtn);
 	}
 }
 
 function addActions(moduleName) {
-	const modifyButtons = document.querySelectorAll(".btn.btn-warning");
+	let modifyButtons = document.querySelectorAll(".btn.btn-warning");
 	const deleteButtons = document.querySelectorAll(".btn.btn-danger");
 
-	modifyButtons.forEach((btn, index) => {
-		btn.onclick = () => {
-			loadModuleForm(moduleName, jsonArray[index]);
-		}
-	});
+	if (moduleName === 'reservation') {
+		modifyButtons = document.querySelectorAll(".btn.btn-primary");
+		modifyButtons.forEach((btn, index) => {
+			btn.onclick = async () => {
+				const register = jsonArray[index];
+				attendOnclick(register);
+			}
+		});
 
-	deleteButtons.forEach((btn, index) => {
-		btn.onclick = () => {
-			deleteRegister(moduleName, jsonArray[index].id);
-		}
-	});
+		deleteButtons.forEach((btn, index) => {
+			btn.onclick = () => {
+				deleteRegister(moduleName, jsonArray[index].id);
+			}
+		});
+	} else {
+		modifyButtons.forEach((btn, index) => {
+			btn.onclick = () => {
+				loadModuleForm(moduleName, jsonArray[index]);
+			}
+		});
+
+		deleteButtons.forEach((btn, index) => {
+			btn.onclick = () => {
+				deleteRegister(moduleName, jsonArray[index].id);
+			}
+		});
+	}
+
 }
 
 function deleteRegister(moduleName, id) {
@@ -106,8 +130,6 @@ async function search(moduleName) {
 	const status = document.getElementById("sltStatus").value;
 
 	const url = `api/${moduleName}/search?filter=${encodeURIComponent(filter)}&e=${status}`;
-
-	console.log(url);
 
 	jsonArray = await makeJSONRequestGET(url);
 

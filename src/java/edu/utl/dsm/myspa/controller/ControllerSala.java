@@ -179,7 +179,7 @@ public class ControllerSala {
     }
     
     
-    private Sala fill(ResultSet rs) throws Exception
+    static Sala fill(ResultSet rs) throws Exception
     {
         //Una variable temporal para crear nuevos objetos de tipo Sucursal:
         Sucursal s = new Sucursal();

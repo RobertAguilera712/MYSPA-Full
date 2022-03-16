@@ -1,16 +1,6 @@
 async function loadModuleForm(moduleName, register) {
     const url = `modules/${moduleName}Form.html`;
     await loadHTML(url);
-    try {
-        const select = document.getElementById("txtBranch");
-        const sucursales = await getRegisters("branch");
-
-        for (let i in sucursales) {
-            const text = sucursales[i].nombre;
-            const value = sucursales[i].id;
-            select.appendChild(makeOption(text, value));
-        }
-    } catch (error) { }
     if (register) {
         putRegisterInForm(register)
     }
@@ -21,6 +11,12 @@ function putRegisterInForm(register) {
     inputs.forEach(input => {
         const value = eval(`register.${input.getAttribute("key")}`);
         input.value = value;
+    });
+
+    const spans = document.querySelectorAll("span[key]");
+    spans.forEach(span => {
+        const value = eval(`register.${span.getAttribute("key")}`);
+        span.textContent = value;
     });
 
     const selects = document.querySelectorAll("select[key]");
