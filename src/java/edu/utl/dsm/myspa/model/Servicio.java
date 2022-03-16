@@ -60,5 +60,10 @@ public class Servicio {
 	public void setTotal(float total) {
 		this.total = total;
 	}
+
+    @Override
+    public String toString() {
+        return "Servicio{" + "id=" + id + ", fecha=" + fecha + ", empleado=" + empleado + ", reservacion=" + reservacion + ", ServiciosT=" + ServiciosT + ", total=" + total + '}';
+    }
 	
 }

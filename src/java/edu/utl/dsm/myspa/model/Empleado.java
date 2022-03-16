@@ -89,6 +89,11 @@ public class Empleado {
 		this.usuario = usuario;
 	}
 
+    @Override
+    public String toString() {
+        return "Empleado{" + "id=" + id + ", numeroEmpleado=" + numeroEmpleado + ", puesto=" + puesto + ", foto=" + foto + ", rutaFoto=" + rutaFoto + ", persona=" + persona + ", usuario=" + usuario + ", estatus=" + estatus + '}';
+    }
+
 
 
 

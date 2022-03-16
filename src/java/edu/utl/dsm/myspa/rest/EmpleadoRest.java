@@ -28,12 +28,12 @@ public class EmpleadoRest extends Application {
         ControllerEmpleado ce = new ControllerEmpleado();
         Gson gs = new Gson();
         try {
-            if (ce.validateToken(t)) {
+//            if (ce.validateToken(t)) {
                 List<Empleado> empleados = ce.getAll(Integer.parseInt(e));
                 out = gs.toJson(empleados);
-            } else {
-                out = "{\"error\":\"Acceso denegado al API\"}";
-            }
+//            } else {
+//                out = "{\"error\":\"Acceso denegado al API\"}";
+//            }
         } catch (Exception ex) {
             out = String.format("\"error\": \"Hubo un error %s\"", ex.toString());
         }
@@ -70,15 +70,15 @@ public class EmpleadoRest extends Application {
         String out = "";
         ControllerEmpleado objCE = new ControllerEmpleado();
         try {
-            if (objCE.validateToken(t)) {
+//            if (objCE.validateToken(t)) {
                 Gson objGS = new Gson();
                 Empleado objE = objGS.fromJson(empleado, Empleado.class);
                 System.out.println(empleado.toString());
                 int idG = objCE.insert(objE);
                 out = "{\"idGenerado\":" + idG + "}";
-            } else {
-                out = "{\"error\":\"Acceso denegado al API\"}";
-            }
+//            } else {
+//                out = "{\"error\":\"Acceso denegado al API\"}";
+//            }
         } catch (Exception ex) {
             out = String.format("{\"error\":\"Hubo un fallo en la inserción,"
                     + "vuelve a intentarlo, o llama al administrador del sistema %s\"}", ex.toString());

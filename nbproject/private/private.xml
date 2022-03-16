@@ -3,9 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kasparov/Desktop/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerServicio.java</file>
-            <file>file:/home/kasparov/Desktop/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Reservacion.java</file>
-            <file>file:/home/kasparov/Desktop/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerReservacion.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Cliente.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/ServicioT.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/SucursalRest.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/db/ConexionMySQL.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/SalaRest.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/EmpleadoRest.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Empleado.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/TratamientoRest.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/ServicioTP.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerServicio.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/HorarioRest.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/Test.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/ClienteREST.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/controller/ControllerCliente.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Persona.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/rest/ServicioRest.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Servicio.java</file>
+            <file>file:/C:/Users/Usuario/MYSPA-Full/src/java/edu/utl/dsm/myspa/model/Reservacion.java</file>
         </group>
     </open-files>
 </project-private>

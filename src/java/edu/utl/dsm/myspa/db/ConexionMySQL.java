@@ -16,7 +16,7 @@ public class ConexionMySQL {
         String url = "jdbc:mysql://127.0.0.1:3306/myspa";
         //Establecer los valores para los permisos de acceso
         String user = "root";
-        String password = "12345";
+        String password = "root";
         
         //Damos de alta el uso del driver
         Class.forName(driver);

@@ -1,22 +1,18 @@
 package edu.utl.dsm.myspa.controller;
 
 import edu.utl.dsm.myspa.model.Cliente;
+import edu.utl.dsm.myspa.model.Empleado;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import edu.utl.dsm.myspa.model.Usuario;
 import edu.utl.dsm.myspa.model.Persona;
+import edu.utl.dsm.myspa.model.Servicio;
 
 public class Test {
 
 	public static void main(String[] args) {
-		ControllerEmpleado ce = new ControllerEmpleado();
-		try {
-			boolean valid = ce.validateToken("de83c3fe509ec505ba88f3bf40c3c53649dc5c6844ff62005e5c867490e75af4");
-			System.out.println(valid);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	public static void probarGetAll() {

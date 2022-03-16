@@ -88,11 +88,14 @@ async function loadSchedulesReservation() {
     document.getElementById('txtTime').innerHTML = html
 }
 
+let reservationToAttend = {};
+
 async function attendOnclick(reservation) {
     const url = 'modules/attendReservation.html';
     await loadHTML(url);
     if (reservation) {
         putRegisterInForm(reservation)
+        reservationToAttend = reservation;
     }
     await loadEmployeesReservation();
     await loadTreatmentsToChoose();
@@ -265,4 +268,45 @@ function saveReservation(e) {
             clearInputs();
         });
     });
+}
+
+
+async function saveService(e) {
+    e.preventDefault();
+    const fecha = document.getElementById('txtFecha').textContent
+    const employeeName = document.getElementById('txtEmployee').value
+    const employeeId = document.querySelector(`#listEmployees option[value="${employeeName}"`).getAttribute('form-value')
+    const employee = await getEmployeeById(employeeId);
+    const serviciosTratamientos = [];
+    for (treatment of chosenTreatments) {
+        const servicioT = {
+            "tratamiento": treatment,
+            "productos": treatment.products
+        }
+        serviciosTratamientos.push(servicioT);
+        delete treatment.products;
+    }
+    const servicio = {
+        "fecha": fecha,
+        "empleado": employee,
+        "reservacion": reservationToAttend,
+        "serviciosT": serviciosTratamientos,
+        "total": 0
+    }
+    console.log(servicio);
+    const url = 'api/service/insert/';
+    const body = `s=${encodeURIComponent(JSON.stringify(servicio))}`;
+    alertaGuardarNuevo(() => {
+        makeJSONRequestPOST(url, body).then(response => {
+            console.log(response);
+            alertarNuevoGuardado();
+            loadModuleTable('reservation');
+        });
+    });
+}
+
+async function getEmployeeById(idEmployee) {
+    const url = `api/employee/search?filter=idEmpleado=${idEmployee}&e=1`;
+    jsonArray = await makeJSONRequestGET(url);
+    return jsonArray[0];
 }

@@ -25,8 +25,11 @@ async function makeJSONRequestPOST(url, body) {
         console.log(token);
         console.log(body);
         body += `&t=${token}`
+        url += `&t=${token}`
         console.log(body)
     }
+    console.log(url);
+    
     console.log(body);
     try {
         const response = await fetch((url), {
@@ -40,6 +43,8 @@ async function makeJSONRequestPOST(url, body) {
         console.log(json);
         return json;
     } catch (error) {
+        console.log("ERROR");
+        console.log(error);
         return "Error de conexión";
     }
 }
