@@ -12,7 +12,7 @@ import edu.utl.dsm.myspa.model.Servicio;
 public class Test {
 
 	public static void main(String[] args) {
-		
+            
 	}
 
 	public static void probarGetAll() {

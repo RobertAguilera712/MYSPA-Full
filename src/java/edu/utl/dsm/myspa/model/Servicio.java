@@ -7,7 +7,7 @@ public class Servicio {
     private String fecha;
     private Empleado empleado;
     private Reservacion reservacion;
-	private List<ServicioT> ServiciosT;
+	private List<ServicioT> serviciosT;
 	private float total;
 
 	public Servicio() {
@@ -46,11 +46,11 @@ public class Servicio {
 	}
 
 	public List<ServicioT> getServiciosT() {
-		return ServiciosT;
+		return serviciosT;
 	}
 
 	public void setServiciosT(List<ServicioT> ServiciosT) {
-		this.ServiciosT = ServiciosT;
+		this.serviciosT = ServiciosT;
 	}
 
 	public float getTotal() {
@@ -63,7 +63,7 @@ public class Servicio {
 
     @Override
     public String toString() {
-        return "Servicio{" + "id=" + id + ", fecha=" + fecha + ", empleado=" + empleado + ", reservacion=" + reservacion + ", ServiciosT=" + ServiciosT + ", total=" + total + '}';
+        return "Servicio{" + "id=" + id + ", fecha=" + fecha + ", empleado=" + empleado + ", reservacion=" + reservacion + ", ServiciosT=" + serviciosT + ", total=" + total + '}';
     }
 	
 }

@@ -48,7 +48,7 @@ public class ClienteREST extends Application {
         ControllerCliente objCE = new ControllerCliente();
         ControllerEmpleado ce = new ControllerEmpleado();
         try {
-            if (ce.validateToken(t)) {
+//            if (ce.validateToken(t)) {
                 Gson objGS = new Gson();
 
                 Cliente objC = objGS.fromJson(cliente, Cliente.class);
@@ -56,7 +56,7 @@ public class ClienteREST extends Application {
 
                 int idG = objCE.insert(objC);
                 out = "{\"idGenerado\":" + idG + "}";
-            }
+//            }
         } catch (Exception ex) {
             out = String.format("{\"error\":\"Hubo un fallo en la inserción,"
                     + "vuelve a intentarlo, o llama al administrador del sistema %s\"}", ex.toString());

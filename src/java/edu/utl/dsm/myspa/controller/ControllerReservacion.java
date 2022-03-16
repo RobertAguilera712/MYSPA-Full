@@ -93,6 +93,22 @@ public class ControllerReservacion {
 		//Se devuelve la lista de salas
 		return reservaciones;
 	}
+        
+        public void delete(int id) throws Exception {
+		String query = "UPDATE reservacion SET estatus = 0 WHERE idReservacion = ?";
+
+		ConexionMySQL conexionMySQL = new ConexionMySQL();
+		Connection conn = conexionMySQL.open();
+
+		PreparedStatement pstmt = conn.prepareStatement(query);
+
+		pstmt.setInt(1, id);
+
+		pstmt.executeUpdate();
+
+		pstmt.close();
+		conexionMySQL.close();
+	}
 
 	private Reservacion fill(ResultSet rs) throws Exception {
 		Reservacion reservacion = new Reservacion();

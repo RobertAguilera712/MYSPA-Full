@@ -3,24 +3,48 @@
 <div class="container my-4">
   <form class="row g-3 justify-content-center" onsubmit="return false;">
     <div class="col-3">
-      <select id="sltSearchBy" class="form-select" placeholder="Ordenar por" required onchange="searchReservation()">
+      <select
+        id="sltSearchBy"
+        class="form-select"
+        placeholder="Ordenar por"
+        required
+        onchange="searchReservation()"
+      >
         <option value="id" selected>Buscar por: ID</option>
-        <option value="cliente.persona.nombreCompleto">Buscar por: Nombre del cliente</option>
+        <option value="cliente.persona.nombreCompleto">
+          Buscar por: Nombre del cliente
+        </option>
         <option value="sala.nombre">Buscar por: Nombre de sala</option>
       </select>
     </div>
     <div class="col-3">
-      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="searchBar"
-        oninput="searchReservation()"/>
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar"
+        aria-label="Buscar"
+        id="searchBar"
+        oninput="searchReservation()"
+      />
     </div>
     <div class="col-3">
-      <select id="sltStatus" class="form-select" placeholder="Ordenar por" onchange="refreshReservationTable()">
-        <option value="1" selected>Mostrar registros activos</option>
-        <option value="0">Mostras registros inactivos</option>
+      <select
+        id="sltStatus"
+        class="form-select"
+        placeholder="Ordenar por"
+        onchange="refreshReservationTable()"
+      >
+        <option value="1" selected>Mostrar reservaciones por atender</option>
+        <option value="2" selected>Mostrar reservaciones atendidas</option>
+        <option value="0">Mostras reservaciones canceladas</option>
       </select>
     </div>
     <div class="col-auto">
-      <button class="btn btn-success" type="button" onclick="loadReservationForm()">
+      <button
+        class="btn btn-success"
+        type="button"
+        onclick="loadReservationForm()"
+      >
         Agregar
       </button>
     </div>
@@ -32,11 +56,12 @@
     <thead>
       <tr>
         <th key="id">ID</th>
+        <th key="fecha">Fecha</th>
         <th key="horario.horaI">Inicio</th>
         <th key="horario.horaF">Fin</th>
         <th key="cliente.persona.nombreCompleto">Cliente</th>
-        <th key="sala.nombre">Cliente</th>
-        <th key="estatus">Sala</th>
+        <th key="sala.nombre">Sala</th>
+        <th key="estatus">Estatus</th>
         <th>Acciones</th>
       </tr>
     </thead>

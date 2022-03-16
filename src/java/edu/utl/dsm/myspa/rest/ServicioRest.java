@@ -33,7 +33,6 @@ public class ServicioRest {
         try {
             Gson gson = new Gson();
             Servicio servicio = gson.fromJson(s, Servicio.class);
-            servicio.getFecha();
             ControllerServicio cs = new ControllerServicio();
             int r = cs.insert(servicio);
             out = String.format("{\"result\": \"Servicio %d generado con exito\"}", r);
